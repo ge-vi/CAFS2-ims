@@ -1,0 +1,37 @@
+version: "3.9"
+
+services:
+  nginx:
+    # nginx: [warn] the "user" directive makes sense only if 
+    # the master process runs with super-user privileges, ignored
+    # user: "1000:1000"
+    container_name: "nginx"
+    image: nginx:1.23.2
+    working_dir: /var/www
+    volumes:
+      - ./src:/var/www
+      - ./_docker/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "80:80"
+    depends_on:
+      - php
+
+  php:
+    container_name: "php"
+    # image: php:8.1.12-fpm-alpine3.16
+    build: _docker/php
+    working_dir: /var/www/public
+    volumes:
+      - ./src:/var/www
+    environment:
+      PHP_IDE_CONFIG: "serverName=php81"
+
+  mysql:
+    container_name: "mysql"
+    image: mysql:8
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./_docker/mysql/data:/var/lib/mysql
+    env_file:
+      - ./_docker/mysql/.env
