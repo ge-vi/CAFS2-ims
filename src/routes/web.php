@@ -18,11 +18,11 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
+    // src/resources/js/Pages/Welcome.vue
     return Inertia::render('Welcome', [
+        // component props
         'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
+        'canRegister' => Route::has('register')
     ]);
 });
 
