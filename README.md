@@ -16,4 +16,3 @@ Inventory Management System
  - IMS registers new demand;
  - IMS registers broken or non-functioning equipment;
  - IMS "knows" the warranty terms of the equipment.
- 
