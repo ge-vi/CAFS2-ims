@@ -21,9 +21,7 @@ const editing = ref(false);
 </script>
 
 <template>
-
-
-    <div class="col g-3">
+    <div class="col gy-3">
         <div class="card">
             <div class="card-body">
 
@@ -33,9 +31,9 @@ const editing = ref(false);
             </div>
             <div class="card-footer">
 
-                <button class="btn btn-outline-primary mx-2" @click="editing = true">
+                <PrimaryButton class="btn btn-outline-primary me-2" @click="editing = true">
                     Edit
-                </button>
+                </PrimaryButton>
 
                 <DropdownLink as="button" :href="route('types.destroy', itemType.id)" method="delete" class="btn-danger" title="Delete this item type">
                     Delete
@@ -44,23 +42,22 @@ const editing = ref(false);
 
             <div class="card-footer" v-if="editing">
                 <form @submit.prevent="form.put(route('types.update', itemType.id), { onSuccess: () => editing = false })">
-                    <input
-                        v-model="form.name"
-                        type="text"
-                    />
-                    <InputError :message="form.errors.name" class="mt-2" />
 
-                    <br>
+                    <div class="mb-3">
+                        <label for="type-name" class="form-label">Name</label>
+                        <input v-model="form.name" type="text" id="type-name" class="form-control"/>
+                        <InputError :message="form.errors.name" class="form-text"/>
+                    </div>
 
-                    <input
-                        v-model="form.period"
-                        type="number"
-                    />
-                    <InputError :message="form.errors.period" class="mt-2" />
+                    <div class="mb-3">
+                    <label for="type-period" class="form-label">Life time period</label>
+                    <input v-model="form.period" type="number" id="type-period" class="form-control"/>
+                    <InputError :message="form.errors.period" class="form-text"/>
+                    </div>
 
-                    <div class="space-x-2">
-                        <PrimaryButton class="mt-4">Save</PrimaryButton>
-                        <button class="mt-4" @click="editing = false; form.reset(); form.clearErrors()">Cancel</button>
+                    <div class="mb-3">
+                        <PrimaryButton>Save</PrimaryButton>
+                        <button class="btn btn-outline-secondary" @click="editing = false; form.reset(); form.clearErrors()">Cancel</button>
                     </div>
                 </form>
             </div>
