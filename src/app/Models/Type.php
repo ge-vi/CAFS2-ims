@@ -12,7 +12,7 @@ class Type extends Model
     protected $fillable = [
         // type name
         'name',
-        // a length or portion of time (item) type is used in months
+        // a length or portion of time (item) type is used (in months)
         'period'
     ];
 }

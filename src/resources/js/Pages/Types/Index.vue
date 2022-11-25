@@ -1,5 +1,4 @@
 <script setup>
-
 import {Head, useForm} from '@inertiajs/inertia-vue3';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import InputError from '@/Components/InputError.vue';
@@ -12,7 +11,6 @@ const form = useForm({
     name: '',
     period: ''
 });
-
 </script>
 
 <template>
@@ -20,9 +18,10 @@ const form = useForm({
 
     <AuthenticatedLayout>
 
-        <h3>Available items types</h3>
+        <h3 class="text-center">Available items types</h3>
 
-        <div class="mt-6 bg-white shadow-sm rounded-lg divide-y">
+
+        <div class="row row-cols-2">
             <ItemType
                 v-for="type in types"
                 :key="type.id"
@@ -30,10 +29,11 @@ const form = useForm({
             />
         </div>
 
-        <hr>
 
-        <h3>Add new item type</h3>
 
+
+
+        <h3 class="text-center">Add new item type</h3>
 
         <div class="max-w-2xl mx-auto p-4 sm:p-6 lg:p-8">
             <form @submit.prevent="form.post(route('types.store'), { onSuccess: () => form.reset() })">
