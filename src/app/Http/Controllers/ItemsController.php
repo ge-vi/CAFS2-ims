@@ -89,12 +89,13 @@ class ItemsController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Item  $item
-     * @return \Illuminate\Http\Response
      */
     public function destroy(Item $item)
     {
-        //
+        $item->delete();
+
+        return redirect()
+            ->route('items.index')
+            ->with('message', 'Item '.$item->name .' was deleted.');
     }
 }
