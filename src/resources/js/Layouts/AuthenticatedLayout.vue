@@ -164,7 +164,7 @@ const showingNavigationDropdown = ref(false);
             <!-- Page Content -->
             <div
                 v-if="$page.props.flash.message"
-                class="alert alert-primary alert-dismissible fade show"
+                class="alert alert-primary my-2"
                 role="alert"
             >
                 {{ $page.props.flash.message }}
