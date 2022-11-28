@@ -1,5 +1,5 @@
 <script setup>
-import { Head, useForm } from '@inertiajs/inertia-vue3';
+import {Head, useForm} from '@inertiajs/inertia-vue3';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import InputError from '@/Components/InputError.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
@@ -9,62 +9,57 @@ defineProps(['types']);
 
 const form = useForm({
     name: '',
-    period: '',
+    period: ''
 });
 </script>
 
 <template>
-  <Head title="Inventory types" />
+    <Head title="Inventory types"/>
 
-  <AuthenticatedLayout>
-    <h3>Available items types</h3>
+    <AuthenticatedLayout>
 
-    <div class="mt-6 bg-white shadow-sm rounded-lg divide-y">
-      <ItemType
-        v-for="type in types"
-        :key="type.id"
-        :item-type="type"
-      />
-    </div>
+        <h3 class="h3 text-center">Available items types</h3>
 
-    <hr>
+        <div class="row row-cols-2">
+            <ItemType
+                v-for="type in types"
+                :key="type.id"
+                :itemType="type"
+            />
+        </div>
 
-    <h3>Add new item type</h3>
+        <div class="row">
+            <div class="col">
+                <div class="card my-5">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h3 class="h3 text-center mt-2">Add new item type</h3>
+                        </div>
+                        <div class="card-text">
+                            <form @submit.prevent="form.post(route('types.store'), { onSuccess: () => form.reset() })">
 
-    <div class="max-w-2xl mx-auto p-4 sm:p-6 lg:p-8">
-      <form
-        @submit.prevent="
-          form.post(route('types.store'), {
-            onSuccess: () => form.reset(),
-          })
-        "
-      >
-        <input
-          v-model="form.name"
-          placeholder="Inventory type"
-          type="text"
-          class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
-        >
-        <InputError
-          :message="form.errors.message"
-          class="mt-2"
-        />
+                                <div class="mb-3">
+                                    <label for="new-type-name" class="form-label">Inventory type name</label>
+                                    <input v-model="form.name" placeholder="name" type="text"
+                                           id="new-type-name"
+                                           class="form-control"/>
+                                    <InputError :message="form.errors.name" class="form-text"/>
+                                </div>
 
-        <input
-          v-model="form.period"
-          placeholder="How long it should be used (in months)?"
-          type="number"
-          class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
-        >
-        <InputError
-          :message="form.errors.message"
-          class="mt-2"
-        />
+                                <div class="mb-3">
+                                    <label for="new-type-period">How long it may be used (in months)?</label>
+                                    <input v-model="form.period" placeholder="period"
+                                           type="number"
+                                           id="new-type-period" class="form-control"/>
+                                    <InputError :message="form.errors.period" class="form-text"/>
+                                </div>
 
-        <PrimaryButton class="mt-4">
-          Save
-        </PrimaryButton>
-      </form>
-    </div>
-  </AuthenticatedLayout>
+                                <PrimaryButton>Save</PrimaryButton>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </AuthenticatedLayout>
 </template>
