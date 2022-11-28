@@ -5,7 +5,7 @@ import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
-import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
+import { Head as InertiaHead, Link, useForm } ;
 
 defineProps({
     canResetPassword: Boolean,
@@ -27,7 +27,7 @@ const submit = () => {
 
 <template>
   <GuestLayout>
-    <Head title="Log in" />
+    <InertiaHead title="Log in" />
 
     <div
       v-if="status"

@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
-import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
+import { Head as InertiaHead, Link, useForm } from '@inertiajs/inertia-vue3';
 
 const props = defineProps({
     status: String,
@@ -21,7 +21,7 @@ const verificationLinkSent = computed(
 
 <template>
   <GuestLayout>
-    <Head title="Email Verification" />
+    <InertiaHead title="Email Verification" />
 
     <div class="mb-4 text-sm text-gray-600">
       Thanks for signing up! Before getting started, could you verify your

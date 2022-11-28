@@ -3,7 +3,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import DeleteUserForm from './Partials/DeleteUserForm.vue';
 import UpdatePasswordForm from './Partials/UpdatePasswordForm.vue';
 import UpdateProfileInformationForm from './Partials/UpdateProfileInformationForm.vue';
-import { Head } from '@inertiajs/inertia-vue3';
+import { Head as InertiaHead } from '@inertiajs/inertia-vue3';
 
 defineProps({
     mustVerifyEmail: Boolean,
@@ -12,7 +12,7 @@ defineProps({
 </script>
 
 <template>
-  <Head title="Profile" />
+  <InertiaHead title="Profile" />
 
   <AuthenticatedLayout>
     <template #header>

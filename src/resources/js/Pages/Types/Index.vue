@@ -1,5 +1,5 @@
 <script setup>
-import { Head, useForm } from '@inertiajs/inertia-vue3';
+import { Head as InertiaHead, useForm } from '@inertiajs/inertia-vue3';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import InputError from '@/Components/InputError.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
@@ -14,7 +14,7 @@ const form = useForm({
 </script>
 
 <template>
-  <Head title="Inventory types" />
+  <InertiaHead title="Inventory types" />
 
   <AuthenticatedLayout>
     <h3 class="h3 text-center">

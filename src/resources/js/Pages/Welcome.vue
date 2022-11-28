@@ -1,5 +1,5 @@
 <script setup>
-import {Head, Link} from '@inertiajs/inertia-vue3';
+import {Head as InertiaHead, Link} from '@inertiajs/inertia-vue3';
 
 defineProps({
     canLogin: Boolean,
@@ -11,7 +11,7 @@ defineProps({
 </script>
 
 <template>
-    <Head title="Welcome"/>
+    <InertiaHead title="Welcome"/>
 
     <div class="row text-center">
         <div class="col">
