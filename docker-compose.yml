@@ -5,7 +5,7 @@ services:
     # nginx: [warn] the "user" directive makes sense only if 
     # the master process runs with super-user privileges, ignored
     # user: "1000:1000"
-    container_name: "nginx"
+    container_name: "nginx-ims"
     image: nginx:1.23.2
     working_dir: /var/www
     volumes:
@@ -17,7 +17,7 @@ services:
       - php
 
   php:
-    container_name: "php"
+    container_name: "php-ims"
     # image: php:8.1.12-fpm-alpine3.16
     build: _docker/php
     #working_dir: /var/www/public
@@ -28,7 +28,7 @@ services:
       PHP_IDE_CONFIG: "serverName=php81"
 
   mysql:
-    container_name: "mysql"
+    container_name: "mysql-ims"
     image: mysql:8
     ports:
       - "3306:3306"
