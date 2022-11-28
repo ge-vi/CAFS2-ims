@@ -2,6 +2,9 @@ import './bootstrap';
 // TODO remove tailwind
 import '../css/app.css';
 
+// eslint-disable-next-line no-unused-vars
+import * as bootstrap from 'bootstrap';
+
 import { createInertiaApp } from '@inertiajs/inertia-vue3';
 import { createApp, h } from 'vue';
 import { InertiaProgress } from '@inertiajs/progress';
