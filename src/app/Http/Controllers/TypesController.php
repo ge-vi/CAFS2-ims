@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Types\StoreTypeRequest;
 use App\Models\Type;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response as InertiaResponse;
 
@@ -22,14 +22,9 @@ class TypesController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreTypeRequest $request)
     {
-        $validated = $request->validate([
-            'name' => ['required','string','min:3','max:255'],
-            'period' => ['required','numeric','min:1','max:65535']
-        ]);
-
-        Type::create($validated);
+        Type::create($request->validated());
 
         return redirect(route('types.index'));
     }
@@ -37,16 +32,11 @@ class TypesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Type $type)
+    public function update(StoreTypeRequest $request, Type $type)
     {
         // $this->authorize('update', $type);
 
-        $validated = $request->validate([
-            'name' => ['required','string','min:3','max:255'],
-            'period' => ['required','numeric','min:1','max:65535']
-        ]);
-
-        $type->update($validated);
+        $type->update($request->validated());
 
         return redirect(route('types.index'));
     }

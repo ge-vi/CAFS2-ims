@@ -33,7 +33,7 @@ class TypeFactory extends Factory
     {
         return [
             'name' => array_rand(array_flip(self::itemsTypes), 1),
-            'period' => $this->faker->numberBetween(12, 36)
+            'period' => $this->faker->numberBetween(12, 36),
         ];
     }
 }

@@ -25,7 +25,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             OwnerSeeder::class,
-            TypeSeeder::class
+            TypeSeeder::class,
+            ItemSeeder::class,
         ]);
     }
 }

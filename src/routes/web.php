@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TypesController;
 use Illuminate\Foundation\Application;
@@ -36,9 +37,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::resource('types', TypesController::class)
+Route::resource('/types', TypesController::class)
     ->only(['index', 'store', 'update', 'destroy'])
     ->middleware(['auth', 'verified']);
 
+Route::resource('/items', ItemsController::class)
+    ->only(['index', 'create', 'store', 'update', 'destroy'])
+    ->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';

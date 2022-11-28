@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 
-defineProps(['modelValue', 'id', 'label', 'type', 'errors']);
+defineProps(['modelValue', 'id', 'label', 'errors']);
 
 defineEmits(['update:modelValue']);
 
@@ -24,7 +24,7 @@ defineExpose({ focus: () => input.value.focus() });
       ref="input"
       class="form-control"
       :value="modelValue"
-      :type="type ?? 'text'"
+      type="date"
       @input="$emit('update:modelValue', $event.target.value)"
     >
     <div

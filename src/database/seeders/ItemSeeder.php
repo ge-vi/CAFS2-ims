@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Type;
-use Database\Factories\TypeFactory;
+use App\Models\Item;
 use Illuminate\Database\Seeder;
 
-class TypeSeeder extends Seeder
+class ItemSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +14,6 @@ class TypeSeeder extends Seeder
      */
     public function run()
     {
-        Type::factory(TypeFactory::countTypes())->create();
+        Item::factory(50)->create();
     }
 }

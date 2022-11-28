@@ -20,7 +20,8 @@ services:
     container_name: "php"
     # image: php:8.1.12-fpm-alpine3.16
     build: _docker/php
-    working_dir: /var/www/public
+    #working_dir: /var/www/public
+    working_dir: /var/www
     volumes:
       - ./src:/var/www
     environment:
