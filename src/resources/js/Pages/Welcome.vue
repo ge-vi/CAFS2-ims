@@ -11,28 +11,48 @@ defineProps({
 </script>
 
 <template>
-    <InertiaHead title="Welcome"/>
+  <InertiaHead title="Welcome" />
 
-    <div class="row text-center">
-        <div class="col">
-            <p class="py-5">Welcome to Inventory Management System</p>
-        </div>
+  <div class="row text-center">
+    <div class="col">
+      <p class="py-5">
+        Welcome to Inventory Management System
+      </p>
     </div>
+  </div>
 
-    <div class="row text-center">
+  <div class="row text-center">
+    <Link
+      v-if="canRegister && !$page.props.auth.user"
+      :href="route('register')"
+      class="btn btn-outline-primary"
+    >
+      Register
+    </Link>
 
-        <Link v-if="canRegister && !$page.props.auth.user" :href="route('register')" class="btn btn-outline-primary">Register</Link>
+    <template v-if="canLogin">
+      <Link
+        v-if="$page.props.auth.user"
+        :href="route('dashboard')"
+        class="btn btn-outline-primary"
+      >
+        Dashboard
+      </Link>
+      <Link
+        v-else
+        :href="route('login')"
+        class="btn btn-outline-primary"
+      >
+        Log in
+      </Link>
+    </template>
+  </div>
 
-        <template v-if="canLogin">
-            <Link v-if="$page.props.auth.user" :href="route('dashboard')" class="btn btn-outline-primary">Dashboard</Link>
-            <Link v-else :href="route('login')" class="btn btn-outline-primary">Log in</Link>
-        </template>
-
+  <div class="row text-center">
+    <div class="col">
+      <p class="py-5">
+        {{ Number(year) === 2022 ? year : `2022-${year}` }}
+      </p>
     </div>
-
-    <div class="row text-center">
-        <div class="col">
-            <p class="py-5">{{ Number(year) === 2022 ? year : `2022-${year}` }}</p>
-        </div>
-    </div>
+  </div>
 </template>
