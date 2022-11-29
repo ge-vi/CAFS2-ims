@@ -1,4 +1,6 @@
 <script setup>
+import { Inertia } from '@inertiajs/inertia';
+
 import { useForm, Link } from '@inertiajs/inertia-vue3';
 import { ref } from 'vue';
 import Dropdown from '@/Components/Dropdown.vue';
@@ -7,6 +9,16 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import InputError from '@/Components/InputError.vue';
 
 const props = defineProps(['item']);
+
+const deleteItem = () => {
+    Inertia.delete(route('items.destroy', props.item.id), {
+        onBefore: () => confirm('Are you sure you want to delete this item?'),
+    });
+};
+const editItem = () => {
+    Inertia.get(route('items.edit', props.item.id));
+};
+
 </script>
 
 <template>
@@ -34,18 +46,20 @@ const props = defineProps(['item']);
               <a
                 class="dropdown-item"
                 href="#"
+                title="Edit this item"
+                @click.prevent="editItem"
               >Edit item</a>
             </li>
 
             <li>
-              <Link
+              <a
                 class="dropdown-item text-danger"
-                :href="route('items.destroy', item.id)"
-                method="delete"
+                href="#"
                 title="Delete this item"
+                @click.prevent="deleteItem"
               >
                 Delete this item
-              </Link>
+              </a>
             </li>
           </ul>
         </div>
@@ -60,10 +74,16 @@ const props = defineProps(['item']);
           <small class="text-muted">description:<br></small>{{ item?.description }}
         </li>
         <li class="list-group-item">
+          <small class="text-muted">warranty:<br></small>{{ item?.warranty_months }} months
+        </li>
+        <li class="list-group-item">
+          <small class="text-muted">EOL:<br></small>{{ item?.type.period - item?.warranty_months }} months
+        </li>
+        <li class="list-group-item">
           <small class="text-muted">owner's name<br></small>{{ item?.owner.name }}
         </li>
         <li class="list-group-item">
-          <small class="text-muted">owner email:<br></small>{{ item?.owner.email }}
+          <small class="text-muted">owner's email:<br></small>{{ item?.owner.email }}
         </li>
       </ul>
     </div>
