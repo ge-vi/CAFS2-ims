@@ -38,12 +38,26 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::resource('/types', TypesController::class)
-    ->only(['index', 'store', 'update', 'destroy'])
-    ->middleware(['auth', 'verified']);
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::resource('/types', TypesController::class)
+        ->only([
+            'index',
+            'store',
+            'update',
+            'destroy'
+        ]);
+});
 
-Route::resource('/items', ItemsController::class)
-    ->only(['index', 'create', 'store', 'update', 'destroy'])
-    ->middleware(['auth', 'verified']);
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::resource('/items', ItemsController::class)
+        ->only([
+            'index',
+            'create',
+            'store',
+            'edit',
+            'update',
+            'destroy'
+        ]);
+});
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
