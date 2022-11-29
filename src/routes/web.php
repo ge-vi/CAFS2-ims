@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DemandController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TypesController;
@@ -59,5 +60,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
             'destroy'
         ]);
 });
+
+Route::post('/demand',[DemandController::class, 'store'])
+    ->name('demand.store');
 
 require __DIR__ . '/auth.php';
