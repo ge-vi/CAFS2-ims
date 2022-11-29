@@ -3,6 +3,8 @@ import { Head as InertiaHead, Link, useForm } from '@inertiajs/inertia-vue3';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from "@/Components/TextInput.vue";
 import TextArea from "@/Components/BS/TextArea.vue";
+import {onBeforeMount, onMounted} from "vue";
+import {Inertia} from "@inertiajs/inertia";
 
 defineProps({
     canLogin: Boolean,
@@ -38,6 +40,14 @@ const formRepair = useForm({
       <h1 class="h1 text-center py-5">
         Welcome to Inventory Management System
       </h1>
+
+        <div
+            v-if="$page.props.flash.message"
+            class="alert alert-primary my-2"
+            role="alert"
+        >
+            {{ $page.props.flash.message }}
+        </div>
     </div>
   </div>
 
@@ -50,7 +60,7 @@ const formRepair = useForm({
             Describe new demand
           </h2>
         </div>
-        <form @submit.prevent="formDemand.post(route('demand.store'))">
+        <form @submit.prevent="formDemand.post(route('demand.store'), { onSuccess: () => formDemand.reset() })">
           <div class="card-body">
             <TextInput
               id="item_name"

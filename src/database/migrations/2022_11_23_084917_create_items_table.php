@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('name');
             $table->foreignIdFor(Owner::class)->constrained();
 
-            $table->foreignIdFor(Type::class)->constrained();
+            $table->foreignId('type_id')->nullable()->constrained('types');
             $table->mediumText('description')->nullable();
             $table->date('warranty_start')->nullable();
             $table->tinyInteger('warranty_months')->unsigned()->default('12');

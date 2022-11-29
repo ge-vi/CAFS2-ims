@@ -25,9 +25,12 @@ const editItem = () => {
   <div class="col gy-3">
     <div class="card shadow">
       <div class="card-header d-flex justify-content-between">
-        <h3>
-          <small class="text-muted">item type:<br></small>{{ item?.type.name }}
-        </h3>
+        <span>
+          <small class="text-muted">item type:</small><br>
+          <h3>
+            {{ item?.type?.name }}
+          </h3>
+        </span>
 
         <div
           class="btn-group"
@@ -77,13 +80,13 @@ const editItem = () => {
           <small class="text-muted">warranty:<br></small>{{ item?.warranty_months }} months
         </li>
         <li class="list-group-item">
-          <small class="text-muted">EOL:<br></small>{{ item?.type.period - item?.warranty_months }} months
+          <small class="text-muted">EOL:<br></small>{{ item?.type?.period - item?.warranty_months }} months
         </li>
         <li class="list-group-item">
-          <small class="text-muted">owner's name<br></small>{{ item?.owner.name }}
+          <small class="text-muted">owner's name<br></small>{{ item?.owner?.name }}
         </li>
         <li class="list-group-item">
-          <small class="text-muted">owner's email:<br></small>{{ item?.owner.email }}
+          <small class="text-muted">owner's email:<br></small>{{ item?.owner?.email }}
         </li>
       </ul>
     </div>
