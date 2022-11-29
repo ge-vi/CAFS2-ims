@@ -25,13 +25,13 @@ class StoreItemRequest extends FormRequest
     {
         // TODO item owner and item type should be checked in DBS
         return [
-            'item_name' => ['required', 'min:3'],
-            'item_owner' => ['required'],
-            'item_type' => ['required'],
-            'item_description' => ['min:3'],
-            'item_warranty_start' => ['required'],
-            'item_warranty_months' => ['required'],
-            'item_warranty_proof' => ['required'],
+            'name' => ['required', 'min:2'],
+            'owner_id' => ['required'],
+            'type_id' => ['required'],
+            'description' => ['min:3'],
+            'warranty_start' => ['required'],
+            'warranty_months' => ['required'],
+            'warranty_proof' => ['required'],
         ];
     }
 }

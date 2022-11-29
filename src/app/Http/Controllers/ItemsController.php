@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Items\StoreItemRequest;
+use App\Http\Resources\ItemResource;
 use App\Models\Item;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response as InertiaResponse;
@@ -37,20 +39,20 @@ class ItemsController extends Controller
     {
         $request = $itemRequest->validated();
 
-        Item::create([
-            'name' => $request['item_name'],
-            'owner_id' => $request['item_owner'],
-            'type_id' => $request['item_type'],
-            'description' => $request['item_description'],
-            'warranty_start' => $request['item_warranty_start'],
-            'warranty_months' => $request['item_warranty_months'],
-            'warranty_proof' => $request['item_warranty_proof'],
+        $item = Item::create([
+            'name' => $request['name'],
+            'owner_id' => $request['owner_id'],
+            'type_id' => $request['type_id'],
+            'description' => $request['description'],
+            'warranty_start' => $request['warranty_start'],
+            'warranty_months' => $request['warranty_months'],
+            'warranty_proof' => $request['warranty_proof'],
         ]);
 
         // Inertia will `catch` this redirect and return json response
         return redirect()
             ->route('items.index')
-            ->with('message', 'Item '.$request['item_name'].' was created.');
+            ->with('message', 'Item '. $item->name .' was created.');
     }
 
     /**
@@ -66,25 +68,35 @@ class ItemsController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Item  $item
-     * @return \Illuminate\Http\Response
      */
-    public function edit(Item $item)
+    public function edit(Item $item): InertiaResponse
     {
-        // ???
+        $item = new ItemResource($item);
+
+        return Inertia::render('Items/Edit', ['item' => $item]);
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Item  $item
-     * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Item $item)
+    public function update(StoreItemRequest $itemRequest, Item $item): RedirectResponse
     {
-        //
+        $request = $itemRequest->validated();
+
+        $item->fill([
+            'name' => $request['name'],
+            'owner_id' => $request['owner_id'],
+            'type_id' => $request['type_id'],
+            'description' => $request['description'],
+            'warranty_start' => $request['warranty_start'],
+            'warranty_months' => $request['warranty_months'],
+            'warranty_proof' => $request['warranty_proof'],
+        ]);
+        $item->save();
+
+        return redirect()
+            ->route('items.index')
+            ->with('message', 'Item '. $item->name .' was updated.');
     }
 
     /**

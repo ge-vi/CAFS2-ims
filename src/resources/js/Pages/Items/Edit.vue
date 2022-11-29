@@ -5,74 +5,78 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import DateInput from '@/Components/DateInput.vue';
 
-const form = useForm({
-    name: '',
-    owner_id: '',
-    type_id: '',
-    description: '',
-    warranty_start: '',
-    warranty_months: '',
-    warranty_proof: '',
+const props = defineProps({
+    item: {
+        type: Object
+    },
+    owners: {
+        type: Array
+    },
+    types: {
+        type: Array
+    }
 });
+
+const form = useForm(props.item.data);
 </script>
 
 <template>
-  <InertiaHead title="Create new item" />
+  <InertiaHead title="Edit item" />
 
   <AuthenticatedLayout>
     <h3 class="h3 text-center my-3">
-      Create new item
+      Edit item
     </h3>
 
     <div class="card shadow">
       <div class="card-body">
-        <form @submit.prevent="form.post(route('items.store'))">
+        <form @submit.prevent="form.put(route('items.update', form.id))">
           <TextInput
-            id="name"
+            id="item_name"
             v-model="form.name"
             :errors="form.errors"
             label="Name"
           />
           <TextInput
-            id="owner_id"
+            id="item_owner"
             v-model="form.owner_id"
             :errors="form.errors"
             label="Owner"
           />
           <TextInput
-            id="type_id"
+            id="item_type"
             v-model="form.type_id"
             :errors="form.errors"
             label="Type"
           />
           <TextInput
-            id="description"
+            id="item_description"
             v-model="form.description"
             :errors="form.errors"
             label="Description"
           />
           <DateInput
-            id="warranty_start"
+            id="item_warranty_start"
             v-model="form.warranty_start"
             :errors="form.errors"
             label="Warranty start"
           />
           <TextInput
-            id="warranty_months"
+            id="item_warranty_months"
             v-model="form.warranty_months"
             :errors="form.errors"
             label="Warranty period (in months)"
             type="number"
           />
           <TextInput
-            id="warranty_proof"
+            id="item_warranty_proof"
             v-model="form.warranty_proof"
             :errors="form.errors"
             label="Warranty proof"
           />
 
           <PrimaryButton :disabled="form.processing">
-            Create new item
+            Update item
           </PrimaryButton>
         </form>
       </div>
