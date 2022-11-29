@@ -17,7 +17,7 @@ const form = useForm({
   <InertiaHead title="Inventory types" />
 
   <AuthenticatedLayout>
-    <h3 class="h3 text-center">
+    <h3 class="h3 text-center my-3">
       Available items types
     </h3>
 
@@ -34,7 +34,7 @@ const form = useForm({
         <div class="card my-5 shadow">
           <div class="card-body">
             <div class="card-title">
-              <h3 class="h3 text-center mt-2">
+              <h3 class="h3 text-center my-3">
                 Add new item type
               </h3>
             </div>

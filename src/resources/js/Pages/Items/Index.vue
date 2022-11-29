@@ -10,7 +10,7 @@ defineProps(['items']);
   <InertiaHead title="Items list" />
 
   <AuthenticatedLayout>
-    <h3 class="h3 text-center">
+    <h3 class="h3 text-center my-3">
       Items list
     </h3>
 
