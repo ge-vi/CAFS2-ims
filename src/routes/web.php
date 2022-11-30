@@ -3,6 +3,7 @@
 use App\Http\Controllers\DemandController;
 use App\Http\Controllers\FaultController;
 use App\Http\Controllers\ItemsController;
+use App\Http\Controllers\OwnersController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TypesController;
 use Illuminate\Foundation\Application;
@@ -56,6 +57,18 @@ Route::middleware(['auth', 'verified'])->group(function () {
             'create',
             'store',
             'edit',
+            'update',
+            'destroy',
+        ]);
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::resource('/owners', OwnersController::class)
+        ->only([
+            'index',
+            'create',
+            'store',
+            'show',
             'update',
             'destroy',
         ]);
