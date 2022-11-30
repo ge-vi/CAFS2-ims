@@ -13,7 +13,9 @@
 </head>
 <body>
 <div class="container my-2">
+
     @inertia
+
     <footer class="row text-center">
         <div class="col py-5">
             <p class="m-0">

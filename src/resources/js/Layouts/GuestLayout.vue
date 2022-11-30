@@ -5,13 +5,13 @@ import { Link } from '@inertiajs/inertia-vue3';
 
 <template>
   <div class="row">
-
+    <!--first section-->
     <div class="col d-flex justify-content-center align-items-center">
       <Link href="/">
         <ApplicationLogo class="w-20 h-20" />
       </Link>
     </div>
-
+    <!--second section-->
     <div class="col">
       <slot />
     </div>

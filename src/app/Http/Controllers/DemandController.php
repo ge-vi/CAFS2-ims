@@ -10,22 +10,23 @@ class DemandController extends Controller
 {
     public function store(StoreDemandRequest $request)
     {
+        $demandRequest = $request->validated();
 
         $owner = Owner::firstOrCreate(
             [
-                'email' => $request['owner_email']
+                'email' => $demandRequest['owner_email'],
             ],
             [
-                'name' => $request['owner_name'],
-                'phone' => $request['owner_phone']
+                'name' => $demandRequest['owner_name'],
+                'phone' => $demandRequest['owner_phone'],
             ]);
 
         $item = Item::create([
-            'name' => $request['item_name'],
-            'description' => $request['item_description'],
-            'owner_id' => $owner->id
+            'name' => htmlspecialchars($demandRequest['item_name']),
+            'description' => htmlspecialchars($demandRequest['item_description']),
+            'owner_id' => $owner->id,
         ]);
 
-        return redirect('/')->with('message', 'Item "'. $item->name .'" was created.');
+        return redirect('/')->with('message', 'Demand for "'.$item->name.'" was created.');
     }
 }

@@ -6,7 +6,6 @@ use App\Http\Requests\Items\StoreItemRequest;
 use App\Http\Resources\ItemResource;
 use App\Models\Item;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response as InertiaResponse;
 
@@ -52,7 +51,7 @@ class ItemsController extends Controller
         // Inertia will `catch` this redirect and return json response
         return redirect()
             ->route('items.index')
-            ->with('message', 'Item "'. $item->name .'" was created.');
+            ->with('message', 'Item "'.$item->name.'" was created.');
     }
 
     /**
@@ -96,7 +95,7 @@ class ItemsController extends Controller
 
         return redirect()
             ->route('items.index')
-            ->with('message', 'Item "'. $item->name .'" was updated.');
+            ->with('message', 'Item "'.$item->name.'" was updated.');
     }
 
     /**
@@ -108,6 +107,6 @@ class ItemsController extends Controller
 
         return redirect()
             ->route('items.index')
-            ->with('message', 'Item "'. $item->name .'" was deleted.');
+            ->with('message', 'Item "'.$item->name.'" was deleted.');
     }
 }

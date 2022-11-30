@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Items;
+namespace App\Http\Requests\Faults;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreDemandRequest extends FormRequest
+class StoreFaultRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class StoreDemandRequest extends FormRequest
     public function rules()
     {
         return [
-            'item_name' => ['required', 'string'],
-            'item_description' => ['required', 'string'],
+            'fault_name' => ['required', 'string'],
+            'fault_description' => ['required', 'string', 'min:20'],
             'owner_name' => ['required', 'string'],
             'owner_email' => ['required', 'email'],
             'owner_phone' => ['required', 'numeric'],

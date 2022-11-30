@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DemandController;
+use App\Http\Controllers\FaultController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TypesController;
@@ -24,7 +25,7 @@ Route::get('/', function () {
     return Inertia::render('Welcome', [
         // component props
         'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register')
+        'canRegister' => false, //Route::has('register'),
     ]);
 });
 
@@ -44,7 +45,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
             'index',
             'store',
             'update',
-            'destroy'
+            'destroy',
         ]);
 });
 
@@ -56,11 +57,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
             'store',
             'edit',
             'update',
-            'destroy'
+            'destroy',
         ]);
 });
 
-Route::post('/demand',[DemandController::class, 'store'])
+Route::post('/demand', [DemandController::class, 'store'])
     ->name('demand.store');
 
-require __DIR__ . '/auth.php';
+Route::post('/repair', [FaultController::class, 'store'])
+    ->name('repair.store');
+
+require __DIR__.'/auth.php';

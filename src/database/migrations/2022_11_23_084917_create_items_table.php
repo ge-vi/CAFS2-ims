@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\Owner;
-use App\Models\Type;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -22,7 +21,7 @@ return new class extends Migration
             $table->foreignIdFor(Owner::class)->constrained();
 
             $table->foreignId('type_id')->nullable()->constrained('types');
-            $table->mediumText('description')->nullable();
+            $table->text('description')->nullable();
             $table->date('warranty_start')->nullable();
             $table->tinyInteger('warranty_months')->unsigned()->default('12');
             $table->string('warranty_proof')->nullable();

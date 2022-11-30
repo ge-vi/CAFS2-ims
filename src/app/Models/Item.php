@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Item extends Model
 {
@@ -19,12 +20,12 @@ class Item extends Model
         'warranty_proof',
     ];
 
-    public function owner()
+    public function owner(): BelongsTo
     {
         return $this->belongsTo(Owner::class);
     }
 
-    public function type()
+    public function type(): BelongsTo
     {
         return $this->belongsTo(Type::class);
     }

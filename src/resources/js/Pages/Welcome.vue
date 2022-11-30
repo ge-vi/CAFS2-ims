@@ -1,14 +1,12 @@
 <script setup>
 import { Head as InertiaHead, Link, useForm } from '@inertiajs/inertia-vue3';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from "@/Components/TextInput.vue";
-import TextArea from "@/Components/BS/TextArea.vue";
-import {onBeforeMount, onMounted} from "vue";
-import {Inertia} from "@inertiajs/inertia";
+import TextInput from '@/Components/TextInput.vue';
+import TextArea from '@/Components/BS/TextArea.vue';
 
 defineProps({
     canLogin: Boolean,
-    canRegister: Boolean
+    canRegister: Boolean,
 });
 
 const formDemand = useForm({
@@ -16,17 +14,16 @@ const formDemand = useForm({
     item_description: '',
     owner_name: '',
     owner_email: '',
-    owner_phone: ''
+    owner_phone: '',
 });
 
 const formRepair = useForm({
-    // item_name: '',
-    // problem_description: '',
-    // owner_name: '',
-    // owner_email: '',
-    // owner_phone: ''
+    fault_name: '',
+    fault_description: '',
+    owner_name: '',
+    owner_email: '',
+    owner_phone: '',
 });
-
 </script>
 
 <template>
@@ -51,13 +48,19 @@ const formRepair = useForm({
   <div class="row">
     <!--left column-->
     <div class="col">
-      <div class="card">
+      <div class="card text-bg-light">
         <div class="card-header">
           <h2 class="text-center">
             Describe new demand
           </h2>
         </div>
-        <form @submit.prevent="formDemand.post(route('demand.store'), { onSuccess: () => formDemand.reset() })">
+        <form
+          @submit.prevent="
+            formDemand.post(route('demand.store'), {
+              onSuccess: () => formDemand.reset(),
+            })
+          "
+        >
           <div class="card-body">
             <TextInput
               id="item_name"
@@ -72,7 +75,7 @@ const formRepair = useForm({
               label="Item description"
             />
           </div>
-          <div class="card-body text-bg-light">
+          <div class="card-body">
             <TextInput
               id="owner_name"
               v-model="formDemand.owner_name"
@@ -102,15 +105,52 @@ const formRepair = useForm({
     </div>
     <!--right column-->
     <div class="col">
-      <div class="card">
+      <div class="card text-bg-dark">
         <div class="card-header">
           <h2 class="text-center">
             Register broken equipment
           </h2>
         </div>
-        <form @submit.prevent="">
+        <form
+          @submit.prevent="
+            formRepair.post(route('repair.store'), {
+              onSuccess: () => formRepair.reset(),
+            })
+          "
+        >
           <div class="card-body">
-            form2
+            <TextInput
+              id="fault_name"
+              v-model="formRepair.fault_name"
+              :errors="formRepair.errors"
+              label="Fault name"
+            />
+            <TextArea
+              id="fault_description"
+              v-model="formRepair.fault_description"
+              :errors="formRepair.errors"
+              label="Broken item fault description"
+            />
+          </div>
+          <div class="card-body">
+            <TextInput
+              id="owner_name"
+              v-model="formRepair.owner_name"
+              :errors="formRepair.errors"
+              label="Your name"
+            />
+            <TextInput
+              id="owner_email"
+              v-model="formRepair.owner_email"
+              :errors="formRepair.errors"
+              label="Your email"
+            />
+            <TextInput
+              id="owner_phone"
+              v-model="formRepair.owner_phone"
+              :errors="formRepair.errors"
+              label="Your phone (only numbers)"
+            />
           </div>
           <div class="card-footer">
             <PrimaryButton :disabled="formRepair.processing">
