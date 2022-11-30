@@ -14,6 +14,19 @@
 <body>
 <div class="container my-2">
     @inertia
+    <footer class="row text-center">
+        <div class="col py-5">
+            <p class="m-0">
+                IMS v1.0.0
+            </p>
+            <p class="m-0">
+                CAFS2 Gerardas Viršuta
+            </p>
+            <p class="m-0">
+                {{ date('Y') === '2022' ? '2022' : '2022-'.date('Y') }}
+            </p>
+        </div>
+    </footer>
 </div>
 </body>
 </html>

@@ -8,10 +8,7 @@ import {Inertia} from "@inertiajs/inertia";
 
 defineProps({
     canLogin: Boolean,
-    canRegister: Boolean,
-    year: {
-        default: 2022,
-    },
+    canRegister: Boolean
 });
 
 const formDemand = useForm({
@@ -41,13 +38,13 @@ const formRepair = useForm({
         Welcome to Inventory Management System
       </h1>
 
-        <div
-            v-if="$page.props.flash.message"
-            class="alert alert-primary my-2"
-            role="alert"
-        >
-            {{ $page.props.flash.message }}
-        </div>
+      <div
+        v-if="$page.props.flash.message"
+        class="alert alert-primary my-2"
+        role="alert"
+      >
+        {{ $page.props.flash.message }}
+      </div>
     </div>
   </div>
 
@@ -151,13 +148,6 @@ const formRepair = useForm({
           Log in
         </Link>
       </template>
-    </div>
-  </div>
-  <div class="row text-center">
-    <div class="col">
-      <p class="py-5">
-        {{ Number(year) === 2022 ? year : `2022-${year}` }}
-      </p>
     </div>
   </div>
 </template>
