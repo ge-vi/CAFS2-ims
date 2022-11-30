@@ -52,7 +52,7 @@ class ItemsController extends Controller
         // Inertia will `catch` this redirect and return json response
         return redirect()
             ->route('items.index')
-            ->with('message', 'Item '. $item->name .' was created.');
+            ->with('message', 'Item "'. $item->name .'" was created.');
     }
 
     /**
@@ -96,7 +96,7 @@ class ItemsController extends Controller
 
         return redirect()
             ->route('items.index')
-            ->with('message', 'Item '. $item->name .' was updated.');
+            ->with('message', 'Item "'. $item->name .'" was updated.');
     }
 
     /**
@@ -108,6 +108,6 @@ class ItemsController extends Controller
 
         return redirect()
             ->route('items.index')
-            ->with('message', 'Item '.$item->name .' was deleted.');
+            ->with('message', 'Item "'. $item->name .'" was deleted.');
     }
 }

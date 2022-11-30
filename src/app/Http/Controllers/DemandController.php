@@ -26,6 +26,6 @@ class DemandController extends Controller
             'owner_id' => $owner->id
         ]);
 
-        return redirect('/')->with('message', 'Item '. $item->name .' was created.');
+        return redirect('/')->with('message', 'Item "'. $item->name .'" was created.');
     }
 }
