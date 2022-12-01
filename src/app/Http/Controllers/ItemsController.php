@@ -3,10 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Items\StoreItemRequest;
-use App\Http\Resources\{ItemResource, OwnerResource, TypeResource};
-use App\Models\{Item, Owner, Type};
+use App\Http\Resources\ItemResource;
+use App\Http\Resources\OwnerResource;
+use App\Http\Resources\TypeResource;
+use App\Models\Item;
+use App\Models\Owner;
+use App\Models\Type;
 use Illuminate\Http\RedirectResponse;
-use Inertia\{Inertia, Response as InertiaResponse};
+use Inertia\Inertia;
+use Inertia\Response as InertiaResponse;
 
 class ItemsController extends Controller
 {

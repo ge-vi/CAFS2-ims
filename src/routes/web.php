@@ -31,6 +31,12 @@ Route::get('/', function () {
     ]);
 });
 
+Route::post('/demand', [DemandController::class, 'store'])
+    ->name('demand.store');
+
+Route::post('/repair', [FaultController::class, 'store'])
+    ->name('repair.store');
+
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth'])
     ->name('dashboard');
@@ -39,9 +45,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
 
-Route::middleware(['auth'])->group(function () {
     Route::resource('/types', TypesController::class)
         ->only([
             'index',
@@ -49,9 +53,7 @@ Route::middleware(['auth'])->group(function () {
             'update',
             'destroy',
         ]);
-});
 
-Route::middleware(['auth'])->group(function () {
     Route::resource('/items', ItemsController::class)
         ->only([
             'index',
@@ -61,9 +63,7 @@ Route::middleware(['auth'])->group(function () {
             'update',
             'destroy',
         ]);
-});
 
-Route::middleware(['auth'])->group(function () {
     Route::resource('/owners', OwnersController::class)
         ->only([
             'index',
@@ -72,11 +72,5 @@ Route::middleware(['auth'])->group(function () {
             'destroy',
         ]);
 });
-
-Route::post('/demand', [DemandController::class, 'store'])
-    ->name('demand.store');
-
-Route::post('/repair', [FaultController::class, 'store'])
-    ->name('repair.store');
 
 require __DIR__.'/auth.php';

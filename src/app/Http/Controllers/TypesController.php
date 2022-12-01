@@ -28,7 +28,7 @@ class TypesController extends Controller
 
         return redirect()
             ->route('types.index')
-            ->with('message' , 'New item type was added.');
+            ->with('message', 'New item type was added.');
     }
 
     /**
