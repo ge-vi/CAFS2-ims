@@ -17,9 +17,9 @@ const form = useForm({
   <InertiaHead title="Inventory types" />
 
   <AuthenticatedLayout>
-    <h3 class="h3 text-center my-3">
+    <template #header>
       Available items types
-    </h3>
+    </template>
 
     <div class="row row-cols-2">
       <ItemType
@@ -42,6 +42,7 @@ const form = useForm({
               <form
                 @submit.prevent="
                   form.post(route('types.store'), {
+                    preserveScroll: true,
                     onSuccess: () => form.reset(),
                   })
                 "

@@ -29,6 +29,6 @@
             </p>
         </div>
     </footer>
-</div>
+</div> <!--container-->
 </body>
 </html>

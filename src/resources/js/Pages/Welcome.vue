@@ -45,7 +45,7 @@ const formRepair = useForm({
     </div>
   </div>
 
-  <div class="row">
+  <div class="row row-cols-sm-1 row-cols-md-2">
     <!--left column-->
     <div class="col">
       <div class="card text-bg-light">

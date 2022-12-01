@@ -4,6 +4,12 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import DateInput from '@/Components/DateInput.vue';
+import InputOptions from "@/Components/BS/InputOptions.vue";
+
+defineProps([
+  'owners',
+  'types'
+]);
 
 const form = useForm({
     name: '',
@@ -20,9 +26,9 @@ const form = useForm({
   <InertiaHead title="Create new item" />
 
   <AuthenticatedLayout>
-    <h3 class="h3 text-center my-3">
+    <template #header>
       Create new item
-    </h3>
+    </template>
 
     <div class="card shadow">
       <div class="card-body">
@@ -33,18 +39,23 @@ const form = useForm({
             :errors="form.errors"
             label="Name"
           />
-          <TextInput
+
+          <InputOptions
             id="owner_id"
             v-model="form.owner_id"
+            :options="owners.data"
             :errors="form.errors"
             label="Owner"
           />
-          <TextInput
+
+          <InputOptions
             id="type_id"
             v-model="form.type_id"
+            :options="types.data"
             :errors="form.errors"
-            label="Type"
+            label="Item type"
           />
+
           <TextInput
             id="description"
             v-model="form.description"

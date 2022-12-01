@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Items\StoreItemRequest;
-use App\Http\Resources\ItemResource;
-use App\Models\Item;
+use App\Http\Resources\{ItemResource, OwnerResource, TypeResource};
+use App\Models\{Item, Owner, Type};
 use Illuminate\Http\RedirectResponse;
-use Inertia\Inertia;
-use Inertia\Response as InertiaResponse;
+use Inertia\{Inertia, Response as InertiaResponse};
 
 class ItemsController extends Controller
 {
@@ -28,7 +27,13 @@ class ItemsController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Items/Create');
+        $owners = OwnerResource::collection(Owner::all());
+        $types = TypeResource::collection(Type::all());
+
+        return Inertia::render('Items/Create', [
+            'owners' => $owners,
+            'types' => $types,
+        ]);
     }
 
     /**
@@ -71,8 +76,14 @@ class ItemsController extends Controller
     public function edit(Item $item): InertiaResponse
     {
         $item = new ItemResource($item);
+        $owners = OwnerResource::collection(Owner::all());
+        $types = TypeResource::collection(Type::all());
 
-        return Inertia::render('Items/Edit', ['item' => $item]);
+        return Inertia::render('Items/Edit', [
+            'item' => $item,
+            'owners' => $owners,
+            'types' => $types,
+        ]);
     }
 
     /**

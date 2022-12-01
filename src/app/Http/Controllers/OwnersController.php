@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Fault;
 use App\Models\Item;
 use App\Models\Owner;
 use Illuminate\Http\Request;
@@ -21,27 +22,6 @@ class OwnersController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
      * Display the specified resource.
      */
     public function show(Owner $owner): InertiaResponse
@@ -50,11 +30,14 @@ class OwnersController extends Controller
             ->with('type')
             ->get();
 
+        $faults = Fault::where('owner_id', $owner->id)
+            ->get();
+
         return Inertia::render('Owners/Show', [
             'owner' => $owner,
-            'items' => $items
+            'items' => $items,
+            'faults' => $faults,
         ]);
-
     }
 
     /**

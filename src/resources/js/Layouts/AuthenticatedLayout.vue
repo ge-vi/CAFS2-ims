@@ -1,8 +1,5 @@
 <script setup>
-import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
-import NavLink from '@/Components/NavLink.vue';
-import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import { Link } from '@inertiajs/inertia-vue3';
 </script>
 
@@ -55,51 +52,20 @@ import { Link } from '@inertiajs/inertia-vue3';
               Items
             </Link>
           </li>
-            <li class="nav-item">
-                <Link
-                    class="nav-link"
-                    :href="route('owners.index')"
-                >
-                    Owners
-                </Link>
-            </li>
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
+          <li class="nav-item">
+            <Link
+              class="nav-link"
+              :href="route('owners.index')"
             >
-              Dropdown
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <a
-                  class="dropdown-item"
-                  href="#"
-                >Action</a>
-              </li>
-              <li>
-                <a
-                  class="dropdown-item"
-                  href="#"
-                >Another action</a>
-              </li>
-              <li><hr class="dropdown-divider"></li>
-              <li>
-                <a
-                  class="dropdown-item"
-                  href="#"
-                >Something else here</a>
-              </li>
-            </ul>
+              Owners
+            </Link>
           </li>
         </ul>
 
         <div class="nav-item">
           <p class="mb-0 me-2">
-            {{ $page.props.auth.user.name }}, {{ $page.props.auth.user.email }}
+            {{ $page.props.auth.user.name }},
+            {{ $page.props.auth.user.email }}
           </p>
         </div>
         <div class="nav-item">
@@ -123,24 +89,22 @@ import { Link } from '@inertiajs/inertia-vue3';
     </div>
   </nav>
 
-  <div>
-    <div>
-      <!-- Page Heading -->
-      <header v-if="$slots.header">
-        <slot name="header" />
-      </header>
+  <!-- Page Heading -->
+  <header v-if="$slots.header">
+    <h3 class="h3 text-center my-3">
+      <slot name="header" />
+    </h3>
+  </header>
 
-      <!-- Page Content -->
-      <div
-        v-if="$page.props.flash.message"
-        class="alert alert-primary my-2"
-        role="alert"
-      >
-        {{ $page.props.flash.message }}
-      </div>
-      <main>
-        <slot />
-      </main>
-    </div>
+  <!-- Page Content -->
+  <div
+    v-if="$page.props.flash.message"
+    class="alert alert-primary my-2"
+    role="alert"
+  >
+    {{ $page.props.flash.message }}
   </div>
+  <main>
+    <slot />
+  </main>
 </template>

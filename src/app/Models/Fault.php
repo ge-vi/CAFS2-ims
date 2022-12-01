@@ -23,7 +23,7 @@ class Fault extends Model
         'service_info',
 
         'item_id',
-        'owner_id'
+        'owner_id',
     ];
 
     public function item(): BelongsTo

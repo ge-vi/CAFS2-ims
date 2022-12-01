@@ -10,9 +10,9 @@ defineProps(['items']);
   <InertiaHead title="Items list" />
 
   <AuthenticatedLayout>
-    <h3 class="h3 text-center my-3">
-      Items list
-    </h3>
+    <template #header>
+        Items list
+    </template>
 
     <Link
       :href="route('items.create')"
