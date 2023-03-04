@@ -1,5 +1,5 @@
 <script setup>
-import { Head as InertiaHead, Link, useForm } from '@inertiajs/inertia-vue3';
+import { Head as InertiaHead, Link, useForm } from '@inertiajs/vue3';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import TextArea from '@/Components/BS/TextArea.vue';

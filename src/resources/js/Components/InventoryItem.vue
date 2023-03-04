@@ -1,7 +1,7 @@
 <script setup>
-import { Inertia } from '@inertiajs/inertia';
+import { router } from '@inertiajs/vue3';
 
-import { useForm, Link } from '@inertiajs/inertia-vue3';
+import { useForm, Link } from '@inertiajs/vue3';
 import { ref } from 'vue';
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
@@ -11,12 +11,12 @@ import InputError from '@/Components/InputError.vue';
 const props = defineProps(['item']);
 
 const deleteItem = () => {
-    Inertia.delete(route('items.destroy', props.item.id), {
+  router.delete(route('items.destroy', props.item.id), {
         onBefore: () => confirm('Are you sure you want to delete this item?'),
     });
 };
 const editItem = () => {
-    Inertia.get(route('items.edit', props.item.id));
+  router.get(route('items.edit', props.item.id));
 };
 
 </script>

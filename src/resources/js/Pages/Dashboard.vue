@@ -1,6 +1,6 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head as InertiaHead } from '@inertiajs/inertia-vue3';
+import { Head as InertiaHead } from '@inertiajs/vue3';
 import NavButton from '@/Components/BS/NavButton.vue';
 import SimpleCard from '@/Components/BS/SimpleCard.vue';
 
