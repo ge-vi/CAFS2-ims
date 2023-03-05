@@ -4,7 +4,7 @@
     "description": "Inventory Management System",
     "license": "MIT",
     "require": {
-        "php": "^8.1.0",
+        "php": "^8.1",
         "ext-pdo": "*",
         "guzzlehttp/guzzle": "^7.2",
         "inertiajs/inertia-laravel": "^v0.6.9",
@@ -20,8 +20,8 @@
         "laravel/sail": "^1.0.1",
         "laravel/tinker": "^2.7",
         "mockery/mockery": "^1.4.4",
-        "nunomaduro/collision": "^6.1",
-        "phpunit/phpunit": "^9.5.10",
+        "nunomaduro/collision": "^7.0",
+        "phpunit/phpunit": "^10.0",
         "spatie/laravel-ignition": "^2.0"
     },
     "autoload": {
