@@ -58,7 +58,6 @@ class FaultController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Fault  $fault
      * @return \Illuminate\Http\Response
      */
     public function show(Fault $fault)
@@ -69,7 +68,6 @@ class FaultController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Fault  $fault
      * @return \Illuminate\Http\Response
      */
     public function edit(Fault $fault)
@@ -80,8 +78,6 @@ class FaultController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\Faults\UpdateFaultRequest  $request
-     * @param  \App\Models\Fault  $fault
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateFaultRequest $request, Fault $fault)
@@ -92,7 +88,6 @@ class FaultController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Fault  $fault
      * @return \Illuminate\Http\Response
      */
     public function destroy(Fault $fault)
