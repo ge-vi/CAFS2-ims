@@ -52,10 +52,10 @@ class ItemsController extends Controller
             'name' => $request['name'],
             'owner_id' => $request['owner_id'],
             'type_id' => $request['type_id'],
-            'description' => $request['description'],
-            'warranty_start' => $request['warranty_start'],
-            'warranty_months' => $request['warranty_months'],
-            'warranty_proof' => $request['warranty_proof'],
+            'description' => $request['description'] ?? null,
+            'warranty_start' => $request['warranty_start'] ?? null,
+            'warranty_months' => $request['warranty_months'] ?? null,
+            'warranty_proof' => $request['warranty_proof'] ?? null,
         ]);
 
         // Inertia will `catch` this redirect and return json response

@@ -27,10 +27,6 @@ class StoreItemRequest extends FormRequest
             'name' => ['required', 'min:2'],
             'owner_id' => ['required', 'exists:owners,id'],
             'type_id' => ['required', 'exists:types,id'],
-            'description' => ['min:3'],
-            'warranty_start' => ['required'],
-            'warranty_months' => ['required'],
-            'warranty_proof' => ['required'],
         ];
     }
 }

@@ -23,7 +23,7 @@ return new class extends Migration
             $table->foreignId('type_id')->nullable()->constrained('types');
             $table->text('description')->nullable();
             $table->date('warranty_start')->nullable();
-            $table->tinyInteger('warranty_months')->unsigned()->default('12');
+            $table->tinyInteger('warranty_months')->nullable();
             $table->string('warranty_proof')->nullable();
 
             $table->timestamps();
