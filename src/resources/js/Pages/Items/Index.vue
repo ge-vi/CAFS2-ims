@@ -1,5 +1,5 @@
 <script setup>
-import {Head as InertiaHead, Link} from '@inertiajs/inertia-vue3';
+import {Head as InertiaHead, Link} from '@inertiajs/vue3';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import InventoryItem from '@/Components/InventoryItem.vue';
 

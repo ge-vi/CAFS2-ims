@@ -4,7 +4,7 @@ import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
-import { Head as InertiaHead, useForm } from '@inertiajs/inertia-vue3';
+import { Head as InertiaHead, useForm } from '@inertiajs/vue3';
 
 defineProps({
     status: String,
