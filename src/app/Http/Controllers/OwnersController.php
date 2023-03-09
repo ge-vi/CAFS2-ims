@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\OwnerResource;
 use App\Models\Fault;
 use App\Models\Item;
 use App\Models\Owner;
@@ -42,13 +43,14 @@ class OwnersController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Owner $owner): InertiaResponse
     {
-        //
+        $owner = new OwnerResource($owner);
+
+        return Inertia::render('Owners/Edit', [
+            'owner' => $owner,
+        ]);
     }
 
     /**

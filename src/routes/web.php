@@ -68,7 +68,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('/owners', OwnersController::class)
         ->only([
             'index',
+            'create',
             'show',
+            'edit',
             'update',
             'destroy',
         ]);
