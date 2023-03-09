@@ -27,7 +27,8 @@ Route::get('/', function () {
     return Inertia::render('Welcome', [
         // component props
         'canLogin' => Route::has('login'),
-        'canRegister' => false, //Route::has('register'),
+        //'canRegister' => Route::has('register'),
+        'canRegister' => false,
     ]);
 });
 
