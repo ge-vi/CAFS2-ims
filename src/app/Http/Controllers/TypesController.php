@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Types\StoreTypeRequest;
 use App\Models\Type;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response as InertiaResponse;
 
@@ -22,33 +22,26 @@ class TypesController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreTypeRequest $request)
     {
-        $validated = $request->validate([
-            'name' => ['required','string','min:3','max:255'],
-            'period' => ['required','numeric','min:1','max:65535']
-        ]);
+        Type::create($request->validated());
 
-        Type::create($validated);
-
-        return redirect(route('types.index'));
+        return redirect()
+            ->route('types.index')
+            ->with('message', 'New item type was added.');
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Type $type)
+    public function update(StoreTypeRequest $request, Type $type)
     {
-        // $this->authorize('update', $type);
+        $validatedType = $request->validated();
+        $type->update($validatedType);
 
-        $validated = $request->validate([
-            'name' => ['required','string','min:3','max:255'],
-            'period' => ['required','numeric','min:1','max:65535']
-        ]);
-
-        $type->update($validated);
-
-        return redirect(route('types.index'));
+        return redirect()
+            ->route('types.index')
+            ->with('message', 'Type '.$validatedType['name'].' updated.');
     }
 
     /**
@@ -56,10 +49,10 @@ class TypesController extends Controller
      */
     public function destroy(Type $type)
     {
-        // $this->authorize('delete', $type);
-
         $type->delete();
 
-        return redirect(route('types.index'));
+        return redirect()
+            ->route('types.index')
+            ->with('message', 'Type deleted.');
     }
 }

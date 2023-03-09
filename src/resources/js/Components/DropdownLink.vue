@@ -1,9 +1,9 @@
 <script setup>
-import { Link } from '@inertiajs/inertia-vue3';
+import { Link } from '@inertiajs/vue3';
 </script>
 
 <template>
-    <Link class="btn">
-        <slot />
-    </Link>
+  <Link class="btn">
+    <slot />
+  </Link>
 </template>

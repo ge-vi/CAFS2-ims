@@ -8,12 +8,27 @@
 
     <!-- Scripts -->
     @routes
-    @vite(['resources/js/app.js', 'resources/scss/app.scss', "resources/js/Pages/{$page['component']}.vue"])
+    @vite(['resources/js/app.js', 'resources/scss/app.scss'])
     @inertiaHead
 </head>
 <body>
 <div class="container my-2">
+
     @inertia
-</div>
+
+    <footer class="row text-center">
+        <div class="col py-5">
+            <p class="m-0">
+                IMS v1.0.2
+            </p>
+            <p class="m-0">
+                CAFS2 Gerardas Viršuta
+            </p>
+            <p class="m-0">
+                {{ date('Y') === '2022' ? '2022' : '2022-'.date('Y') }}
+            </p>
+        </div>
+    </footer>
+</div> <!--container-->
 </body>
 </html>

@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 
-defineProps(['modelValue']);
+defineProps(['modelValue', 'id', 'label', 'type', 'errors']);
 
 defineEmits(['update:modelValue']);
 
@@ -17,10 +17,21 @@ defineExpose({ focus: () => input.value.focus() });
 </script>
 
 <template>
+  <div class="mb-3">
+    <label :for="id">{{ label }}</label>
     <input
-        class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
-        :value="modelValue"
-        @input="$emit('update:modelValue', $event.target.value)"
-        ref="input"
-    />
+      :id="id"
+      ref="input"
+      class="form-control"
+      :value="modelValue"
+      :type="type ?? 'text'"
+      @input="$emit('update:modelValue', $event.target.value)"
+    >
+    <div
+      v-if="errors && errors[id]"
+      class="invalid-feedback"
+    >
+      {{ errors[id] }}
+    </div>
+  </div>
 </template>

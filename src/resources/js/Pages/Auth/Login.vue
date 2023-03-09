@@ -1,11 +1,9 @@
 <script setup>
 import Checkbox from '@/Components/Checkbox.vue';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
-import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
+import { Head as InertiaHead, Link, useForm } from '@inertiajs/vue3';
 
 defineProps({
     canResetPassword: Boolean,
@@ -26,65 +24,75 @@ const submit = () => {
 </script>
 
 <template>
-    <GuestLayout>
-        <Head title="Log in" />
+  <GuestLayout>
+    <InertiaHead title="Log in" />
 
-        <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
-            {{ status }}
+    <div class="card my-5 shadow">
+      <div
+        v-if="status"
+        class="card-body"
+      >
+        <div class="mb-4">
+          {{ status }}
         </div>
+      </div>
+      <!--card-body-->
 
-        <form @submit.prevent="submit">
-            <div>
-                <InputLabel for="email" value="Email" />
+      <form @submit.prevent="submit">
+        <div class="card-body">
+          <TextInput
+            id="email"
+            v-model="form.email"
+            type="email"
+            label="Email"
+            :errors="form.errors"
+            required
+            autofocus
+            autocomplete="username"
+          />
 
-                <TextInput
-                    id="email"
-                    type="email"
-                    class="mt-1 block w-full"
-                    v-model="form.email"
-                    required
-                    autofocus
-                    autocomplete="username"
-                />
+          <TextInput
+            id="password"
+            v-model="form.password"
+            type="password"
+            label="Password"
+            :errors="form.errors"
+            required
+            autocomplete="current-password"
+          />
 
-                <InputError class="mt-2" :message="form.errors.email" />
-            </div>
+          <div class="block mt-4">
+            <label class="flex items-center">
+              <Checkbox
+                v-model:checked="form.remember"
+                name="remember"
+              />
+              <span class="ml-2 text-sm text-gray-600">Remember me</span>
+            </label>
+          </div>
+        </div>
+        <!--card-body-->
 
-            <div class="mt-4">
-                <InputLabel for="password" value="Password" />
+        <div class="card-footer">
+          <Link
+            v-if="canResetPassword"
+            :href="route('password.request')"
+            class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          >
+            Forgot your password?
+          </Link>
 
-                <TextInput
-                    id="password"
-                    type="password"
-                    class="mt-1 block w-full"
-                    v-model="form.password"
-                    required
-                    autocomplete="current-password"
-                />
-
-                <InputError class="mt-2" :message="form.errors.password" />
-            </div>
-
-            <div class="block mt-4">
-                <label class="flex items-center">
-                    <Checkbox name="remember" v-model:checked="form.remember" />
-                    <span class="ml-2 text-sm text-gray-600">Remember me</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <Link
-                    v-if="canResetPassword"
-                    :href="route('password.request')"
-                    class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                    Forgot your password?
-                </Link>
-
-                <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Log in
-                </PrimaryButton>
-            </div>
-        </form>
-    </GuestLayout>
+          <PrimaryButton
+            class="ml-4"
+            :class="{ 'opacity-25': form.processing }"
+            :disabled="form.processing"
+          >
+            Log in
+          </PrimaryButton>
+        </div>
+        <!--card-footer-->
+      </form>
+    </div>
+    <!--card-->
+  </GuestLayout>
 </template>

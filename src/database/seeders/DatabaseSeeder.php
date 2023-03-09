@@ -17,15 +17,14 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
         \App\Models\User::factory()->create([
-            'name' => 'Gerardas',
+            'name' => 'gerardas',
             'email' => 'gerardas.virsuta@gmail.com',
-            'password' => '$2y$10$D.PAo24vW4qUJ0cTpaWFUekiaN6UlWPgGWAp4ySKtLf3OsIljqW8m',
-            // U$$fZ6o7DmmJJkoDeBS8odaK^Uu4buSWKoDXh*&cGi3bYnPi%K
         ]);
 
         $this->call([
             OwnerSeeder::class,
-            TypeSeeder::class
+            TypeSeeder::class,
+            ItemSeeder::class,
         ]);
     }
 }

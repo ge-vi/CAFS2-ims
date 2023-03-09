@@ -1,5 +1,21 @@
 @import "~bootstrap/scss/bootstrap";
 
 body {
-    background-color: #FFF8BDFF;
+    background-color: #F3F4F6;
+}
+
+.invalid-feedback {
+    display: block;
+    background-color: yellow;
+    padding: 3px 5px;
+    border-radius: 3px;
+}
+
+.w-20{
+    display: block;
+    width: 20vh;
+}
+.h-20 {
+    display: block;
+    height: 20vh;
 }

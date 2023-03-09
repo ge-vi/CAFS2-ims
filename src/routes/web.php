@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DemandController;
+use App\Http\Controllers\FaultController;
+use App\Http\Controllers\ItemsController;
+use App\Http\Controllers\OwnersController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TypesController;
 use Illuminate\Foundation\Application;
@@ -22,24 +27,50 @@ Route::get('/', function () {
     return Inertia::render('Welcome', [
         // component props
         'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'year' => date('Y'),
+        'canRegister' => false, //Route::has('register'),
     ]);
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::post('/demand', [DemandController::class, 'store'])
+    ->name('demand.store');
+
+Route::post('/repair', [FaultController::class, 'store'])
+    ->name('repair.store');
+
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::resource('/types', TypesController::class)
+        ->only([
+            'index',
+            'store',
+            'update',
+            'destroy',
+        ]);
+
+    Route::resource('/items', ItemsController::class)
+        ->only([
+            'index',
+            'create',
+            'store',
+            'edit',
+            'update',
+            'destroy',
+        ]);
+
+    Route::resource('/owners', OwnersController::class)
+        ->only([
+            'index',
+            'show',
+            'update',
+            'destroy',
+        ]);
 });
-
-Route::resource('types', TypesController::class)
-    ->only(['index', 'store', 'update', 'destroy'])
-    ->middleware(['auth', 'verified']);
-
 
 require __DIR__.'/auth.php';
