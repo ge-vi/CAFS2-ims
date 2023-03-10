@@ -1,12 +1,12 @@
 <script setup>
-import { Head as InertiaHead, Link } from '@inertiajs/vue3';
+import {Head as InertiaHead, Link} from '@inertiajs/vue3';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 
 defineProps(['owner', 'items', 'faults']);
 </script>
 
 <template>
-  <InertiaHead title="Owner info" />
+  <InertiaHead title="Owner info"/>
 
   <AuthenticatedLayout>
     <template #header>
@@ -17,11 +17,32 @@ defineProps(['owner', 'items', 'faults']);
       <div class="col">
         <div class="card mb-3">
           <div class="card-body">
-            <p class="m-0">
-              <small class="text-muted">name</small><br>{{ owner.name }}<br>
-              <small class="text-muted">email</small><br>{{ owner.email }}<br>
+            <p
+              v-if="owner.name"
+              class="m-0"
+            >
+              <small class="text-muted">name</small><br>{{ owner.name }}
+            </p>
+            <p
+              v-if="owner.email"
+              class="m-0"
+            >
+              <small class="text-muted">email</small><br>{{ owner.email }}
+            </p>
+            <p
+              v-if="owner.phone"
+              class="m-0"
+            >
               <small class="text-muted">phone</small><br>{{ owner.phone }}
             </p>
+          </div>
+          <div class="card-footer">
+            <Link
+              class="btn btn-outline-primary"
+              :href="route('owners.edit', owner)"
+            >
+              Edit owner data
+            </Link>
           </div>
         </div>
       </div>

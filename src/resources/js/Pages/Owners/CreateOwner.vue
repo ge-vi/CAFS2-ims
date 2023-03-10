@@ -4,23 +4,25 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 
-const props = defineProps(['owner']);
-
-const form = useForm(props.item.data);
+const form = useForm({
+  name: '',
+  email: '',
+  phone: ''
+});
 
 </script>
 
 <template>
-  <InertiaHead title="Edit owner" />
+  <InertiaHead title="Create owner" />
 
   <AuthenticatedLayout>
     <template #header>
-      Edit owner
+      Create owner
     </template>
 
     <div class="card shadow">
       <div class="card-body">
-        <form @submit.prevent="form.put(route('owners.update', form.id))">
+        <form @submit.prevent="form.post(route('owners.store'))">
           <TextInput
             id="name"
             v-model="form.name"
@@ -32,8 +34,8 @@ const form = useForm(props.item.data);
             id="email"
             v-model="form.email"
             :errors="form.errors"
-            type="email"
             label="Email"
+            type="email"
           />
 
           <TextInput
@@ -44,11 +46,10 @@ const form = useForm(props.item.data);
           />
 
           <PrimaryButton :disabled="form.processing">
-            Update owner
+            Create new owner
           </PrimaryButton>
         </form>
       </div>
     </div>
   </AuthenticatedLayout>
-
 </template>

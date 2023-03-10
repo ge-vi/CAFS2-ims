@@ -69,6 +69,7 @@ Route::middleware('auth')->group(function () {
         ->only([
             'index',
             'create',
+            'store',
             'show',
             'edit',
             'update',
