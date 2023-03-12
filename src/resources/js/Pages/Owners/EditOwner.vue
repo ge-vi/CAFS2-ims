@@ -7,6 +7,12 @@ import DropdownLink from '@/Components/DropdownLink.vue';
 
 const props = defineProps(['owner']);
 const ownerForm = useForm(props.owner.data);
+
+const deleteOwner = () => {
+  router.delete(route('owners.destroy', ownerForm), {
+    onBefore: () => confirm('Are you sure you want to delete this owner?'),
+  });
+};
 </script>
 
 <template>
@@ -50,10 +56,10 @@ const ownerForm = useForm(props.owner.data);
 
           <DropdownLink
             as="button"
-            :href="route('owners.destroy', ownerForm)"
-            method="delete"
-            class="btn-danger "
+            href="#"
+            class="btn-danger"
             title="Delete this owner"
+            @click.prevent="deleteOwner"
           >
             Delete owner
           </DropdownLink>
