@@ -17,8 +17,7 @@ const deleteType = () => {
     route('types.destroy', form),
     {
       onBefore: () => confirm("Delete item type?")
-    }
-  );
+    });
 }
 
 const editing = ref(false);
