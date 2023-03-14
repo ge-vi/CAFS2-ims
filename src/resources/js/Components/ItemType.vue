@@ -1,7 +1,7 @@
 <script setup>
-import {useForm} from '@inertiajs/vue3';
 import {ref} from 'vue';
-import DropdownLink from '@/Components/DropdownLink.vue';
+import {useForm, router} from '@inertiajs/vue3';
+import ButtonLink from '@/Components/BS/ButtonLink.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import InputError from '@/Components/InputError.vue';
 
@@ -11,6 +11,15 @@ const form = useForm({
     name: props.itemType.name,
     period: props.itemType.period,
 });
+
+const deleteType = () => {
+  router.delete(
+    route('types.destroy', form),
+    {
+      onBefore: () => confirm("Delete item type?")
+    }
+  );
+}
 
 const editing = ref(false);
 
@@ -31,15 +40,15 @@ const editing = ref(false);
           Edit
         </PrimaryButton>
 
-        <DropdownLink
+        <ButtonLink
           as="button"
-          :href="route('types.destroy', itemType.id)"
-          method="delete"
+          href="#"
           class="btn-danger"
           title="Delete this item type"
+          @click.prevent="deleteType"
         >
           Delete
-        </DropdownLink>
+        </ButtonLink>
       </div>
 
       <div

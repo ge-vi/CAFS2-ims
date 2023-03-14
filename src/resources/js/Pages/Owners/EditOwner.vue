@@ -1,9 +1,9 @@
 <script setup>
-import {Head as InertiaHead, useForm} from '@inertiajs/vue3';
+import {Head as InertiaHead, router, useForm} from '@inertiajs/vue3';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
-import DropdownLink from '@/Components/DropdownLink.vue';
+import ButtonLink from '@/Components/BS/ButtonLink.vue';
 
 const props = defineProps(['owner']);
 const ownerForm = useForm(props.owner.data);
@@ -54,7 +54,7 @@ const deleteOwner = () => {
             Update owner
           </PrimaryButton>
 
-          <DropdownLink
+          <ButtonLink
             as="button"
             href="#"
             class="btn-danger"
@@ -62,7 +62,7 @@ const deleteOwner = () => {
             @click.prevent="deleteOwner"
           >
             Delete owner
-          </DropdownLink>
+          </ButtonLink>
         </div>
       </form>
     </div>
