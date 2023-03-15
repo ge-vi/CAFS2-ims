@@ -1,6 +1,8 @@
 # CAFS2-ims
 Inventory Management System
 
+Stage build: http://ims.web-darbai.lt
+
 ## LT
 
  - IMS registruoja inventorių;

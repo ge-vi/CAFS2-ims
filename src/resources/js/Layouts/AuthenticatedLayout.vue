@@ -1,6 +1,6 @@
 <script setup>
-import DropdownLink from '@/Components/DropdownLink.vue';
 import { Link } from '@inertiajs/vue3';
+import ButtonLink from '@/Components/BS/ButtonLink.vue';
 </script>
 
 <template>
@@ -76,14 +76,14 @@ import { Link } from '@inertiajs/vue3';
             Profile
           </Link>
 
-          <DropdownLink
+          <ButtonLink
+            as="button"
             class="btn btn-outline-warning"
             :href="route('logout')"
             method="post"
-            as="button"
           >
             Log Out
-          </DropdownLink>
+          </ButtonLink>
         </div>
       </div>
     </div>

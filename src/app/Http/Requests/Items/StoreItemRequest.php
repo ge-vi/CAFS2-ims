@@ -27,6 +27,10 @@ class StoreItemRequest extends FormRequest
             'name' => ['required', 'min:2'],
             'owner_id' => ['required', 'exists:owners,id'],
             'type_id' => ['required', 'exists:types,id'],
+            'description' => ['nullable', 'min:3'],
+            'warranty_start' => ['nullable', 'date_format:"Y-m-d"'],
+            'warranty_months' => ['nullable', 'numeric', 'max:255'],
+            'warranty_proof' => ['nullable', 'string'],
         ];
     }
 }

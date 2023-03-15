@@ -1,8 +1,9 @@
 <script setup>
-import { Head as InertiaHead, Link } from '@inertiajs/vue3';
+import {Head as InertiaHead, Link} from '@inertiajs/vue3';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 
 defineProps(['owners']);
+
 </script>
 
 <template>
@@ -10,8 +11,15 @@ defineProps(['owners']);
 
   <AuthenticatedLayout>
     <template #header>
-        Owners list
+      Owners list
     </template>
+
+    <Link
+      :href="route('owners.create')"
+      class="btn btn-outline-primary"
+    >
+      Create new owner
+    </Link>
 
     <div class="row">
       <div class="col">

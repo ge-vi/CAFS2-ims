@@ -27,7 +27,8 @@ Route::get('/', function () {
     return Inertia::render('Welcome', [
         // component props
         'canLogin' => Route::has('login'),
-        'canRegister' => false, //Route::has('register'),
+        //'canRegister' => Route::has('register'),
+        'canRegister' => false,
     ]);
 });
 
@@ -67,7 +68,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('/owners', OwnersController::class)
         ->only([
             'index',
+            'create',
+            'store',
             'show',
+            'edit',
             'update',
             'destroy',
         ]);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Types\StoreTypeRequest;
 use App\Models\Type;
+use Illuminate\Database\QueryException;
 use Inertia\Inertia;
 use Inertia\Response as InertiaResponse;
 
@@ -41,7 +42,7 @@ class TypesController extends Controller
 
         return redirect()
             ->route('types.index')
-            ->with('message', 'Type '.$validatedType['name'].' updated.');
+            ->with('message', sprintf('Type "%s" updated.', $validatedType['name']));
     }
 
     /**
@@ -49,10 +50,16 @@ class TypesController extends Controller
      */
     public function destroy(Type $type)
     {
-        $type->delete();
+        try {
+            $type->delete();
+        } catch (QueryException $e) {
+            return redirect()
+                ->route('types.index')
+                ->with('message', sprintf('Type "%s" is in usage and could not be deleted.', $type->name));
+        }
 
         return redirect()
             ->route('types.index')
-            ->with('message', 'Type deleted.');
+            ->with('message', sprintf('Type "%s" was deleted.', $type->name));
     }
 }
