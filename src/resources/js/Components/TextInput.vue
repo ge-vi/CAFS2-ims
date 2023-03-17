@@ -1,7 +1,14 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 
-defineProps(['modelValue', 'id', 'label', 'type', 'errors']);
+defineProps([
+  'modelValue',
+  'id',
+  'label',
+  'type',
+  'helptext',
+  'errors'
+]);
 
 defineEmits(['update:modelValue']);
 
@@ -27,6 +34,12 @@ defineExpose({ focus: () => input.value.focus() });
       :type="type ?? 'text'"
       @input="$emit('update:modelValue', $event.target.value)"
     >
+    <div
+      v-if="helptext"
+      class="form-text"
+    >
+      {{ helptext }}
+    </div>
     <div
       v-if="errors && errors[id]"
       class="invalid-feedback"

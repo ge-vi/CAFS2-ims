@@ -14,7 +14,7 @@ class Fault extends Model
         'name',
 
         // serial number or internal inventor id
-        'unique_id',
+        'fault_inv',
 
         // fault description described by user
         'description',

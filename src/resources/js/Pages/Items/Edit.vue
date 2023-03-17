@@ -16,7 +16,7 @@ const form = useForm(props.item.data);
 
   <AuthenticatedLayout>
     <template #header>
-      Edit item
+      Edit item: {{ form.inv }}
     </template>
 
     <div class="card shadow">

@@ -26,6 +26,7 @@ class StoreFaultRequest extends FormRequest
         return [
             'fault_name' => ['required', 'string'],
             'fault_description' => ['required', 'string', 'min:20'],
+            'fault_inv' => ['nullable', 'string'],
             'owner_name' => ['required', 'string'],
             'owner_email' => ['required', 'email'],
             'owner_phone' => ['required', 'numeric'],

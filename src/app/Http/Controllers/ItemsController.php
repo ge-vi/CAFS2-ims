@@ -18,12 +18,16 @@ class ItemsController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Item $item): InertiaResponse
+    public function index(): InertiaResponse
     {
-        return Inertia::render('Items/Index', [
-            'items' => Item::with('owner')
+        $items = ItemResource::collection(
+            Item::with('owner')
                 ->with('type')
-                ->get(),
+                ->get()
+        );
+
+        return Inertia::render('Items/Index', [
+            'items' => $items,
         ]);
     }
 
