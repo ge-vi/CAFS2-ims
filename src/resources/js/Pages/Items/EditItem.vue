@@ -30,16 +30,16 @@ const form = useForm(props.item.data);
           />
 
           <InputOptions
-            id="owner"
-            v-model="form.owner_id"
+            id="owner_id"
+            v-model="form.owner.id"
             :errors="form.errors"
             :options="owners.data"
             label="Owner"
           />
 
           <InputOptions
-            id="type"
-            v-model="form.type_id"
+            id="type_id"
+            v-model="form.type.id"
             :errors="form.errors"
             :options="types.data"
             label="Type"

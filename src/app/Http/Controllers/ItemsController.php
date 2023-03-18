@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Items\StoreItemRequest;
+use App\Http\Requests\Items\UpdateItemRequest;
 use App\Http\Resources\ItemResource;
 use App\Http\Resources\OwnerResource;
 use App\Http\Resources\TypeResource;
@@ -26,7 +27,7 @@ class ItemsController extends Controller
                 ->get()
         );
 
-        return Inertia::render('Items/Index', [
+        return Inertia::render('Items/IndexItems', [
             'items' => $items,
         ]);
     }
@@ -34,12 +35,12 @@ class ItemsController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): InertiaResponse
     {
         $owners = OwnerResource::collection(Owner::all());
         $types = TypeResource::collection(Type::all());
 
-        return Inertia::render('Items/Create', [
+        return Inertia::render('Items/CreateItem', [
             'owners' => $owners,
             'types' => $types,
         ]);
@@ -48,7 +49,7 @@ class ItemsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreItemRequest $itemRequest)
+    public function store(StoreItemRequest $itemRequest): RedirectResponse
     {
         $request = $itemRequest->validated();
 
@@ -87,7 +88,7 @@ class ItemsController extends Controller
         $owners = OwnerResource::collection(Owner::all());
         $types = TypeResource::collection(Type::all());
 
-        return Inertia::render('Items/Edit', [
+        return Inertia::render('Items/EditItem', [
             'item' => $item,
             'owners' => $owners,
             'types' => $types,
@@ -97,14 +98,14 @@ class ItemsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(StoreItemRequest $itemRequest, Item $item): RedirectResponse
+    public function update(UpdateItemRequest $itemRequest, Item $item): RedirectResponse
     {
         $request = $itemRequest->validated();
 
         $item->fill([
             'name' => $request['name'],
-            'owner_id' => $request['owner_id'],
-            'type_id' => $request['type_id'],
+            'owner_id' => $request['owner']['id'],
+            'type_id' => $request['type']['id'],
             'description' => $request['description'],
             'warranty_start' => $request['warranty_start'],
             'warranty_months' => $request['warranty_months'],
