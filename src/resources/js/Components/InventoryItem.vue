@@ -66,6 +66,10 @@ const editItem = () => {
       <template #body>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">
+            <small class="text-muted">inv:<br></small>
+            {{ props.item.inv }}
+          </li>
+          <li class="list-group-item">
             <small class="text-muted">name:<br></small>
             {{ item?.name }}
           </li>

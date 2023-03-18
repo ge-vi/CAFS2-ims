@@ -11,7 +11,7 @@ defineProps(['items']);
 
   <AuthenticatedLayout>
     <template #header>
-        Items list
+      Items list
     </template>
 
     <Link
@@ -23,7 +23,7 @@ defineProps(['items']);
 
     <div class="row row-cols-2">
       <InventoryItem
-        v-for="item in items"
+        v-for="item in items.data"
         :key="item.id"
         :item="item"
       />

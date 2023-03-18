@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -9,6 +10,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Item extends Model
 {
     use HasFactory;
+
+    private string $inventoryPrefix = 'INV-';
 
     protected $fillable = [
         'name',
@@ -28,5 +31,14 @@ class Item extends Model
     public function type(): BelongsTo
     {
         return $this->belongsTo(Type::class);
+    }
+
+    protected function inv(): Attribute
+    {
+        return Attribute::make(
+            get: function () {
+                return $this->inventoryPrefix . str_pad($this->id, 5, 0, STR_PAD_LEFT);
+            }
+        );
     }
 }

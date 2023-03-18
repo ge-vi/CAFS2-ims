@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
 
             $table->text('name');
-            $table->tinyText('unique_id')->nullable();
+            $table->tinyText('fault_inv')->nullable();
             $table->text('description');
             $table->text('service_info')->nullable();
 

@@ -20,6 +20,7 @@ const formDemand = useForm({
 const formRepair = useForm({
     fault_name: '',
     fault_description: '',
+    fault_inv: '',
     owner_name: '',
     owner_email: '',
     owner_phone: '',
@@ -124,12 +125,21 @@ const formRepair = useForm({
               v-model="formRepair.fault_name"
               :errors="formRepair.errors"
               label="Fault name"
+              helptext="Broken equipment name like: phone, laptop, etc."
             />
             <TextArea
               id="fault_description"
               v-model="formRepair.fault_description"
               :errors="formRepair.errors"
               label="Broken item fault description"
+              placeholder="Short description what is not good with device or not working."
+            />
+            <TextInput
+              id="fault_inv"
+              v-model="formRepair.fault_inv"
+              :errors="formRepair.errors"
+              label="Item INV number"
+              helptext="Item INV-xxxxx number from the label if exists."
             />
           </div>
           <div class="card-body">

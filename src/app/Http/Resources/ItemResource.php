@@ -17,8 +17,9 @@ class ItemResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'owner_id' => $this->owner_id,
-            'type_id' => $this->type_id,
+            'owner' => new OwnerResource($this->owner),
+            'type' => new TypeResource($this->type),
+            'inv' => $this->inv,
             'description' => $this->description,
             'warranty_start' => $this->warranty_start,
             'warranty_months' => $this->warranty_months,
