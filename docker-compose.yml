@@ -25,7 +25,7 @@ services:
     volumes:
       - ./src:/var/www
     environment:
-      PHP_IDE_CONFIG: "serverName=php81"
+      PHP_IDE_CONFIG: "serverName=localhost"
 
   mysql:
     container_name: "mysql-ims"
