@@ -8,10 +8,6 @@ use App\Models\Owner;
 
 class DemandController extends Controller
 {
-    /**
-     * Initial item type.
-     */
-    const DEFAULT_ITEM_TYPE_ID = 1;
     public function store(StoreDemandRequest $request)
     {
         $demandRequest = $request->validated();
@@ -29,7 +25,6 @@ class DemandController extends Controller
             'name' => htmlspecialchars($demandRequest['item_name']),
             'description' => htmlspecialchars($demandRequest['item_description']),
             'owner_id' => $owner->id,
-            'type_id' => self::DEFAULT_ITEM_TYPE_ID,
         ]);
 
         return redirect('/')->with('message', 'Demand for "'.$item->name.'" was created.');

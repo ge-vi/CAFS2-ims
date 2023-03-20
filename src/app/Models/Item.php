@@ -23,6 +23,11 @@ class Item extends Model
         'warranty_proof',
     ];
 
+    protected $attributes = [
+        /** Default value for type id. */
+        'type_id' => 1,
+    ];
+
     public function owner(): BelongsTo
     {
         return $this->belongsTo(Owner::class);
