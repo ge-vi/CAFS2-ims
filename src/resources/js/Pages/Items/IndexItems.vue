@@ -21,7 +21,7 @@ defineProps(['items']);
       Create new item
     </Link>
 
-    <div class="row row-cols-2">
+    <div class="row row-cols-1 row-cols-md-2">
       <InventoryItem
         v-for="item in items.data"
         :key="item.id"

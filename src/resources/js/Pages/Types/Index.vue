@@ -21,7 +21,7 @@ const form = useForm({
       Available items types
     </template>
 
-    <div class="row row-cols-2">
+    <div class="row row-cols-1 row-cols-md-2">
       <ItemType
         v-for="type in types"
         :key="type.id"
