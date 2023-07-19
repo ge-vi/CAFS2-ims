@@ -6,13 +6,14 @@ import TextInput from '@/Components/TextInput.vue';
 import ButtonLink from '@/Components/BS/ButtonLink.vue';
 
 const props = defineProps(['owner']);
-const ownerForm = useForm(props.owner.data);
+const ownerForm = useForm(props.owner.data); // .data is from Laravel resource
 
 const deleteOwner = () => {
-  router.delete(route('owners.destroy', ownerForm), {
-    onBefore: () => confirm('Are you sure you want to delete this owner?'),
+  router.delete(
+    route('owners.destroy', ownerForm), {
+      onBefore: () => confirm('Are you sure you want to delete this owner?'),
   });
-};
+}
 </script>
 
 <template>
