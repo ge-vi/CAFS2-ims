@@ -19,7 +19,7 @@
     <footer class="row text-center">
         <div class="col py-5">
             <p class="m-0">
-                IMS v1.0.2
+                IMS v1.0.3
             </p>
             <p class="m-0">
                 CAFS2 Gerardas Viršuta
