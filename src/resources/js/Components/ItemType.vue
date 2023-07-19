@@ -7,15 +7,11 @@ import InputError from '@/Components/InputError.vue';
 
 const props = defineProps(['itemType']);
 
-const form = useForm({
-    name: props.itemType.name,
-    period: props.itemType.period,
-});
+const itemForm = useForm(props.itemType);
 
 const deleteType = () => {
   router.delete(
-    route('types.destroy', form),
-    {
+    route('types.destroy', itemForm), {
       onBefore: () => confirm("Delete item type?")
     });
 }
@@ -55,7 +51,7 @@ const editing = ref(false);
         class="card-footer"
       >
         <form
-          @submit.prevent="form.put(route('types.update', itemType.id), { onSuccess: () => editing = false })"
+          @submit.prevent="itemForm.put(route('types.update', itemForm.id), { onSuccess: () => editing = false })"
         >
           <div class="mb-3">
             <label
@@ -64,12 +60,12 @@ const editing = ref(false);
             >Name</label>
             <input
               id="type-name"
-              v-model="form.name"
+              v-model="itemForm.name"
               type="text"
               class="form-control"
             >
             <InputError
-              :message="form.errors.name"
+              :message="itemForm.errors.name"
               class="form-text"
             />
           </div>
@@ -81,12 +77,12 @@ const editing = ref(false);
             >Life time period</label>
             <input
               id="type-period"
-              v-model="form.period"
+              v-model="itemForm.period"
               type="number"
               class="form-control"
             >
             <InputError
-              :message="form.errors.period"
+              :message="itemForm.errors.period"
               class="form-text"
             />
           </div>
@@ -95,7 +91,7 @@ const editing = ref(false);
             <PrimaryButton>Save</PrimaryButton>
             <button
               class="btn btn-outline-secondary"
-              @click="editing = false; form.reset(); form.clearErrors()"
+              @click="editing = false; itemForm.reset(); itemForm.clearErrors()"
             >
               Cancel
             </button>
