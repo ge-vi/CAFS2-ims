@@ -14,9 +14,9 @@ RUN apk add --update \
 		libjpeg-turbo-dev \
 		libpng-dev \
         linux-headers \
-	&& docker-php-ext-install gd pdo_mysql \
+	&& docker-php-ext-install gd pdo_mysql bcmath \
 	&& docker-php-ext-configure gd --with-jpeg --with-freetype \
-    && docker-php-ext-enable pdo_mysql \
+    && docker-php-ext-enable pdo_mysql bcmath \
     && pecl install xdebug \
     && docker-php-ext-enable xdebug
 
