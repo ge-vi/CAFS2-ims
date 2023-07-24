@@ -61,34 +61,30 @@ const submit = () => {
             autocomplete="current-password"
           />
 
-          <div class="block mt-4">
-            <label class="flex items-center">
+          <div class="form-check mt-4">
               <Checkbox
                 v-model:checked="form.remember"
                 name="remember"
-              />
-              <span class="ml-2 text-sm text-gray-600">Remember me</span>
-            </label>
+            />
+            <label class="form-check-label">Remember me</label>
           </div>
         </div>
         <!--card-body-->
 
-        <div class="card-footer">
-          <Link
-            v-if="canResetPassword"
-            :href="route('password.request')"
-            class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-          >
-            Forgot your password?
-          </Link>
-
+        <div class="card-footer d-flex justify-content-between">
           <PrimaryButton
-            class="ml-4"
             :class="{ 'opacity-25': form.processing }"
             :disabled="form.processing"
           >
             Log in
           </PrimaryButton>
+          <Link
+            v-if="canResetPassword"
+            class="btn btn-link"
+            :href="route('password.request')"
+          >
+            Forgot your password?
+          </Link>
         </div>
         <!--card-footer-->
       </form>
