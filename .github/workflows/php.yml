@@ -1,4 +1,4 @@
-name: Laravel
+name: Laravel and vuejs 
 
 on:
   push:
@@ -12,8 +12,23 @@ defaults:
     working-directory: ./src
 
 jobs:
-  laravel-tests:
+  build:
+  
+      runs-on: ubuntu-latest
 
+      steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+      - name: Install dependencies
+        run: npm ci
+      - name: Build app
+        run: npm run build --if-present
+
+  laravel-tests:
+  
     runs-on: ubuntu-latest
 
     steps:
