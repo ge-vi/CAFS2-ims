@@ -67,5 +67,19 @@
     "Whoops!": "Ups!",
     "You are receiving this email because we received a password reset request for your account.": "Jūs gavote šį el. laišką, nes buvo išsiųsta jūsų paskyros slaptažodžio atstatymo užklausa.",
     "You're logged in!": "Jūs prisijungėte!",
-    "Your email address is unverified.": "Jūsų el. pašto adresas nepatvirtintas."
+    "Your email address is unverified.": "Jūsų el. pašto adresas nepatvirtintas.",
+    "Welcome to Inventory Management System": "Atsargų valdymo sistema",
+    "Describe new demand": "Suformuokite naują poreikį",
+    "Item name": "Pavadinimas",
+    "Short item name": "Reikiamo dalyko pavadinimas pvz.: telefonas, kompiuterio įkroviklis",
+    "Item description": "Trumpas aprašymas",
+    "Your name": "Tavo vardas",
+    "Your email": "Tavo el. pašto adresas",
+    "Your phone (only numbers)": "Tavo telefono numeris (tik skaičiai)",
+    "Submit new demand": "Pateikti užsakymą",
+    "Register broken equipment": "Pranešti apie sugedusią įrangą",
+    "Fault name": "Sugedusios įrangos pavadinimas",
+    "Broken item fault description": "Gedimo aprašymas",
+    "Item INV number": "Įrangos INV numeris",
+    "Register for inspection": "Registruoti patikrinimui"
 }
