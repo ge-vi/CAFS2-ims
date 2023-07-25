@@ -1,5 +1,8 @@
 # CAFS2-ims
+
 Inventory Management System
+
+Multilanguage
 
 Stage build: http://ims.web-darbai.lt
 
