@@ -1,5 +1,6 @@
 <script setup>
 import { onMounted, ref } from 'vue';
+import { trans } from 'laravel-vue-i18n';
 
 defineProps(['modelValue', 'id', 'label', 'rows', 'errors']);
 
@@ -18,7 +19,7 @@ defineExpose({ focus: () => textarea.value.focus() });
 
 <template>
   <div class="mb-3">
-    <label :for="id">{{ label }}</label>
+    <label :for="id">{{ trans(label) }}</label>
     <textarea
       :id="id"
       ref="textarea"
@@ -31,7 +32,7 @@ defineExpose({ focus: () => textarea.value.focus() });
       v-if="errors && errors[id]"
       class="invalid-feedback"
     >
-      {{ errors[id] }}
+      {{ trans(errors[id]) }}
     </div>
   </div>
 </template>

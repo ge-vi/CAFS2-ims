@@ -66,7 +66,7 @@ const submit = () => {
                 v-model:checked="form.remember"
                 name="remember"
             />
-            <label class="form-check-label">Remember me</label>
+            <label class="form-check-label">{{ $t('Remember me') }}</label>
           </div>
         </div>
         <!--card-body-->
@@ -76,14 +76,14 @@ const submit = () => {
             :class="{ 'opacity-25': form.processing }"
             :disabled="form.processing"
           >
-            Log in
+            {{ $t('Log in') }}
           </PrimaryButton>
           <Link
             v-if="canResetPassword"
             class="btn btn-link"
             :href="route('password.request')"
           >
-            Forgot your password?
+            {{ $t('Forgot your password?') }}
           </Link>
         </div>
         <!--card-footer-->

@@ -1,5 +1,6 @@
 <script setup>
 import { onMounted, ref } from 'vue';
+import { trans } from 'laravel-vue-i18n';
 
 defineProps([
   'modelValue',
@@ -25,7 +26,7 @@ defineExpose({ focus: () => input.value.focus() });
 
 <template>
   <div class="mb-3">
-    <label :for="id">{{ label }}</label>
+    <label :for="id">{{ trans(label) }}</label>
     <input
       :id="id"
       ref="input"
@@ -38,13 +39,13 @@ defineExpose({ focus: () => input.value.focus() });
       v-if="helptext"
       class="form-text"
     >
-      {{ helptext }}
+      {{ trans(helptext) }}
     </div>
     <div
       v-if="errors && errors[id]"
       class="invalid-feedback"
     >
-      {{ errors[id] }}
+      {{ trans(errors[id]) }}
     </div>
   </div>
 </template>

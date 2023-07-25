@@ -33,7 +33,7 @@ const formRepair = useForm({
   <div class="row">
     <div class="col">
       <h1 class="h1 text-center py-5">
-        Welcome to Inventory Management System
+        {{ $t('Welcome to Inventory Management System') }}
       </h1>
 
       <div
@@ -52,7 +52,7 @@ const formRepair = useForm({
       <div class="card text-bg-light">
         <div class="card-header">
           <h2 class="text-center">
-            Describe new demand
+            {{ $t('Describe new demand') }}
           </h2>
         </div>
         <form
@@ -68,6 +68,7 @@ const formRepair = useForm({
               v-model="formDemand.item_name"
               :errors="formDemand.errors"
               label="Item name"
+              helptext="Short item name"
             />
             <TextArea
               id="item_description"
@@ -98,7 +99,7 @@ const formRepair = useForm({
           </div>
           <div class="card-footer">
             <PrimaryButton :disabled="formDemand.processing">
-              Submit new demand
+              {{ $t('Submit new demand') }}
             </PrimaryButton>
           </div>
         </form>
@@ -109,7 +110,7 @@ const formRepair = useForm({
       <div class="card text-bg-dark">
         <div class="card-header">
           <h2 class="text-center">
-            Register broken equipment
+            {{ $t('Register broken equipment') }}
           </h2>
         </div>
         <form
@@ -164,7 +165,7 @@ const formRepair = useForm({
           </div>
           <div class="card-footer">
             <PrimaryButton :disabled="formRepair.processing">
-              Register for inspection
+              {{ $t('Register for inspection') }}
             </PrimaryButton>
           </div>
         </form>
@@ -188,14 +189,14 @@ const formRepair = useForm({
           :href="route('dashboard')"
           class="btn btn-outline-primary"
         >
-          Dashboard
+          {{ $t('Dashboard') }}
         </Link>
         <Link
           v-else
           :href="route('login')"
           class="btn btn-outline-primary"
         >
-          Log in
+          {{ $t('Log in') }}
         </Link>
       </template>
     </div>
