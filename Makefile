@@ -65,7 +65,7 @@ composer:
 	docker exec php-$(COMPOSE_PROJECT_NAME) composer --working-dir=$(COMPOSER_ROOT) $(filter-out $@,$(MAKECMDGOALS))
 
 ## logs	:	View containers logs.
-##		You can optinally pass an argument with the service name to limit logs
+##		You can optionally pass an argument with the service name to limit logs
 ##		logs php	: View `php` container logs.
 ##		logs nginx php	: View `nginx` and `php` containers logs.
 .PHONY: logs
@@ -76,4 +76,5 @@ logs:
 %:
 	@:
 
-#php artisan migrate:fresh --seed
+# php artisan migrate:fresh --seed
+# composer dump-autoload
