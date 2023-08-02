@@ -2,7 +2,13 @@
 import { onMounted, ref } from 'vue';
 import { trans } from 'laravel-vue-i18n';
 
-defineProps(['modelValue', 'id', 'label', 'rows', 'errors']);
+defineProps([
+  'modelValue',
+  'id',
+  'textareaLabel',
+  'rows',
+  'errors'
+]);
 
 defineEmits(['update:modelValue']);
 
@@ -19,8 +25,11 @@ defineExpose({ focus: () => textarea.value.focus() });
 
 <template>
   <div class="mb-3">
-    <label class="px-2" :for="id">
-      {{ trans(label) }}
+    <label
+      class="px-2"
+      :for="id"
+    >
+      {{ trans(textareaLabel) }}
     </label>
     <textarea
       :id="id"
@@ -30,7 +39,10 @@ defineExpose({ focus: () => textarea.value.focus() });
       :value="modelValue"
       @input="$emit('update:modelValue', $event.target.value)"
     />
-    <div v-if="errors && errors[id]" class="invalid-feedback">
+    <div
+      v-if="errors && errors[id]"
+      class="invalid-feedback"
+    >
       {{ trans(errors[id]) }}
     </div>
   </div>

@@ -75,7 +75,7 @@ const formRepair = useForm({
               id="item_description"
               v-model="formDemand.item_description"
               :errors="formDemand.errors"
-              input-label="Item description"
+              textarea-label="Item description"
             />
           </div>
           <div class="card-body">
@@ -133,7 +133,7 @@ const formRepair = useForm({
               id="fault_description"
               v-model="formRepair.fault_description"
               :errors="formRepair.errors"
-              input-label="Broken item fault description"
+              textarea-label="Broken item fault description"
               placeholder="Short description what is not good with device or not working."
             />
             <TextInput
