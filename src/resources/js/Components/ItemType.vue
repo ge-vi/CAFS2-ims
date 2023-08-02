@@ -1,6 +1,6 @@
 <script setup>
-import {ref} from 'vue';
-import {useForm, router} from '@inertiajs/vue3';
+import { ref } from 'vue';
+import { router, useForm } from '@inertiajs/vue3';
 import ButtonLink from '@/Components/BS/ButtonLink.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import InputError from '@/Components/InputError.vue';
@@ -17,7 +17,6 @@ const deleteType = () => {
 }
 
 const editing = ref(false);
-
 </script>
 
 <template>
@@ -51,7 +50,11 @@ const editing = ref(false);
         class="card-footer"
       >
         <form
-          @submit.prevent="itemForm.put(route('types.update', itemForm.id), { onSuccess: () => editing = false })"
+          @submit.prevent="
+            itemForm.put(route('types.update', itemForm.id), {
+              onSuccess: () => (editing = false),
+            })
+          "
         >
           <div class="mb-3">
             <label
@@ -74,7 +77,9 @@ const editing = ref(false);
             <label
               for="type-period"
               class="form-label"
-            >Life time period</label>
+            >
+              Life time period
+            </label>
             <input
               id="type-period"
               v-model="itemForm.period"
@@ -91,7 +96,11 @@ const editing = ref(false);
             <PrimaryButton>Save</PrimaryButton>
             <button
               class="btn btn-outline-secondary"
-              @click="editing = false; itemForm.reset(); itemForm.clearErrors()"
+              @click="
+                editing = false;
+                itemForm.reset();
+                itemForm.clearErrors();
+              "
             >
               Cancel
             </button>

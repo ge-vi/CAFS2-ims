@@ -10,7 +10,6 @@ defineProps({
         default: 'btn-outline-primary'
     }
 });
-
 </script>
 
 <template>
