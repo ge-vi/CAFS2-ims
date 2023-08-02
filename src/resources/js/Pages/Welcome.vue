@@ -3,37 +3,38 @@ import { Head as InertiaHead, Link, useForm } from '@inertiajs/vue3';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import TextArea from '@/Components/BS/TextArea.vue';
+import { trans } from 'laravel-vue-i18n';
 
 defineProps({
-    canLogin: Boolean,
-    canRegister: Boolean,
+  canLogin: Boolean,
+  canRegister: Boolean,
 });
 
 const formDemand = useForm({
-    item_name: '',
-    item_description: '',
-    owner_name: '',
-    owner_email: '',
-    owner_phone: '',
+  item_name: '',
+  item_description: '',
+  owner_name: '',
+  owner_email: '',
+  owner_phone: '',
 });
 
 const formRepair = useForm({
-    fault_name: '',
-    fault_description: '',
-    fault_inv: '',
-    owner_name: '',
-    owner_email: '',
-    owner_phone: '',
+  fault_name: '',
+  fault_description: '',
+  fault_inv: '',
+  owner_name: '',
+  owner_email: '',
+  owner_phone: '',
 });
 </script>
 
 <template>
-  <InertiaHead title="Welcome" />
+  <InertiaHead :title="trans('Welcome')" />
 
   <div class="row">
     <div class="col">
       <h1 class="h1 text-center py-5">
-        {{ $t('Welcome to Inventory Management System') }}
+        {{ trans('Welcome to Inventory Management System') }}
       </h1>
 
       <div
@@ -52,7 +53,7 @@ const formRepair = useForm({
       <div class="card text-bg-light">
         <div class="card-header">
           <h2 class="text-center">
-            {{ $t('Describe new demand') }}
+            {{ trans('Describe new demand') }}
           </h2>
         </div>
         <form
@@ -67,14 +68,14 @@ const formRepair = useForm({
               id="item_name"
               v-model="formDemand.item_name"
               :errors="formDemand.errors"
-              label="Item name"
-              helptext="Short item name"
+              input-label="Item name"
+              help-text="Short item name"
             />
             <TextArea
               id="item_description"
               v-model="formDemand.item_description"
               :errors="formDemand.errors"
-              label="Item description"
+              input-label="Item description"
             />
           </div>
           <div class="card-body">
@@ -82,24 +83,24 @@ const formRepair = useForm({
               id="owner_name"
               v-model="formDemand.owner_name"
               :errors="formDemand.errors"
-              label="Your name"
+              input-label="Your name"
             />
             <TextInput
               id="owner_email"
               v-model="formDemand.owner_email"
               :errors="formDemand.errors"
-              label="Your email"
+              input-label="Your email"
             />
             <TextInput
               id="owner_phone"
               v-model="formDemand.owner_phone"
               :errors="formDemand.errors"
-              label="Your phone (only numbers)"
+              input-label="Your phone (only numbers)"
             />
           </div>
           <div class="card-footer">
             <PrimaryButton :disabled="formDemand.processing">
-              {{ $t('Submit new demand') }}
+              {{ trans('Submit new demand') }}
             </PrimaryButton>
           </div>
         </form>
@@ -110,7 +111,7 @@ const formRepair = useForm({
       <div class="card text-bg-dark">
         <div class="card-header">
           <h2 class="text-center">
-            {{ $t('Register broken equipment') }}
+            {{ trans('Register broken equipment') }}
           </h2>
         </div>
         <form
@@ -125,22 +126,22 @@ const formRepair = useForm({
               id="fault_name"
               v-model="formRepair.fault_name"
               :errors="formRepair.errors"
-              label="Fault name"
-              helptext="Broken equipment name like: phone, laptop, etc."
+              input-label="Fault name"
+              help-text="Broken equipment name like: phone, laptop, etc."
             />
             <TextArea
               id="fault_description"
               v-model="formRepair.fault_description"
               :errors="formRepair.errors"
-              label="Broken item fault description"
+              input-label="Broken item fault description"
               placeholder="Short description what is not good with device or not working."
             />
             <TextInput
               id="fault_inv"
               v-model="formRepair.fault_inv"
               :errors="formRepair.errors"
-              label="Item INV number"
-              helptext="Item INV-xxxxx number from the label if exists."
+              input-label="Item INV number"
+              help-text="Item INV-xxxxx number from the label if exists."
             />
           </div>
           <div class="card-body">
@@ -148,24 +149,24 @@ const formRepair = useForm({
               id="owner_name"
               v-model="formRepair.owner_name"
               :errors="formRepair.errors"
-              label="Your name"
+              input-label="Your name"
             />
             <TextInput
               id="owner_email"
               v-model="formRepair.owner_email"
               :errors="formRepair.errors"
-              label="Your email"
+              input-label="Your email"
             />
             <TextInput
               id="owner_phone"
               v-model="formRepair.owner_phone"
               :errors="formRepair.errors"
-              label="Your phone (only numbers)"
+              input-label="Your phone (only numbers)"
             />
           </div>
           <div class="card-footer">
             <PrimaryButton :disabled="formRepair.processing">
-              {{ $t('Register for inspection') }}
+              {{ trans('Register for inspection') }}
             </PrimaryButton>
           </div>
         </form>
@@ -180,7 +181,7 @@ const formRepair = useForm({
         :href="route('register')"
         class="btn btn-outline-primary me-2"
       >
-        Register
+        {{ trans('Register') }}
       </Link>
 
       <template v-if="canLogin">
@@ -189,14 +190,10 @@ const formRepair = useForm({
           :href="route('dashboard')"
           class="btn btn-outline-primary"
         >
-          {{ $t('Dashboard') }}
+          {{ trans('Dashboard') }}
         </Link>
-        <Link
-          v-else
-          :href="route('login')"
-          class="btn btn-outline-primary"
-        >
-          {{ $t('Log in') }}
+        <Link v-else :href="route('login')" class="btn btn-outline-primary">
+          {{ trans('Log in') }}
         </Link>
       </template>
     </div>

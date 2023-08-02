@@ -2,7 +2,8 @@
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
-import {Head as InertiaHead, Link, useForm} from '@inertiajs/vue3';
+import { Head as InertiaHead, Link, useForm } from '@inertiajs/vue3';
+import { trans } from 'laravel-vue-i18n';
 
 defineProps({
   status: String,
@@ -25,13 +26,10 @@ const submit = () => {
 
 <template>
   <GuestLayout>
-    <InertiaHead title="Register" />
+    <InertiaHead :title="trans('Register')" />
 
     <div class="card my-5 shadow">
-      <div
-        v-if="status"
-        class="card-body"
-      >
+      <div v-if="status" class="card-body">
         <div class="mb-4">
           {{ status }}
         </div>
@@ -44,7 +42,7 @@ const submit = () => {
             id="name"
             v-model="form.name"
             type="text"
-            label="Name"
+            input-label="Name"
             :errors="form.errors"
             required
             autofocus
@@ -55,7 +53,7 @@ const submit = () => {
             id="email"
             v-model="form.email"
             type="email"
-            label="Email"
+            input-label="Email"
             :errors="form.errors"
             required
             autocomplete="username"
@@ -65,7 +63,7 @@ const submit = () => {
             id="password"
             v-model="form.password"
             type="password"
-            label="Password"
+            input-label="Password"
             :errors="form.errors"
             required
             autocomplete="new-password"
@@ -75,7 +73,7 @@ const submit = () => {
             id="password_confirmation"
             v-model="form.password_confirmation"
             type="password"
-            label="Confirm Password"
+            input-label="Confirm Password"
             :errors="form.errors"
             required
             autocomplete="new-password"
@@ -84,12 +82,7 @@ const submit = () => {
         <!--card-body-->
 
         <div class="card-footer">
-          <Link
-            :href="route('login')"
-            class="pe-2"
-          >
-            Already registered?
-          </Link>
+          <Link :href="route('login')" class="pe-2"> Already registered? </Link>
 
           <PrimaryButton
             class="ml-4"

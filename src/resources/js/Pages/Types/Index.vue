@@ -4,29 +4,24 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import InputError from '@/Components/InputError.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import ItemType from '@/Components/ItemType.vue';
+import { trans } from 'laravel-vue-i18n';
 
 defineProps(['types']);
 
 const form = useForm({
-    name: '',
-    period: '',
+  name: '',
+  period: '',
 });
 </script>
 
 <template>
-  <InertiaHead title="Inventory types" />
+  <InertiaHead :title="trans('Inventory types')" />
 
   <AuthenticatedLayout>
-    <template #header>
-      Available items types
-    </template>
+    <template #header> Available items types </template>
 
     <div class="row row-cols-1 row-cols-md-2">
-      <ItemType
-        v-for="type in types"
-        :key="type.id"
-        :item-type="type"
-      />
+      <ItemType v-for="type in types" :key="type.id" :item-type="type" />
     </div>
 
     <div class="row">
@@ -34,9 +29,7 @@ const form = useForm({
         <div class="card my-5 shadow">
           <div class="card-body">
             <div class="card-title">
-              <h3 class="h3 text-center my-3">
-                Add new item type
-              </h3>
+              <h3 class="h3 text-center my-3">Add new item type</h3>
             </div>
             <div class="card-text">
               <form
@@ -48,37 +41,31 @@ const form = useForm({
                 "
               >
                 <div class="mb-3">
-                  <label
-                    for="new-type-name"
-                    class="form-label"
-                  >Inventory type name</label>
+                  <label for="new-type-name" class="form-label"
+                    >Inventory type name</label
+                  >
                   <input
                     id="new-type-name"
                     v-model="form.name"
                     placeholder="name"
                     type="text"
                     class="form-control"
-                  >
-                  <InputError
-                    :message="form.errors.name"
-                    class="form-text"
                   />
+                  <InputError :message="form.errors.name" class="form-text" />
                 </div>
 
                 <div class="mb-3">
-                  <label for="new-type-period">How long it may be used (in
-                    months)?</label>
+                  <label for="new-type-period"
+                    >How long it may be used (in months)?</label
+                  >
                   <input
                     id="new-type-period"
                     v-model="form.period"
                     placeholder="period"
                     type="number"
                     class="form-control"
-                  >
-                  <InputError
-                    :message="form.errors.period"
-                    class="form-text"
                   />
+                  <InputError :message="form.errors.period" class="form-text" />
                 </div>
 
                 <PrimaryButton>Save</PrimaryButton>

@@ -4,41 +4,44 @@ import DeleteUserForm from './Partials/DeleteUserForm.vue';
 import UpdatePasswordForm from './Partials/UpdatePasswordForm.vue';
 import UpdateProfileInformationForm from './Partials/UpdateProfileInformationForm.vue';
 import { Head as InertiaHead } from '@inertiajs/vue3';
+import { trans } from 'laravel-vue-i18n';
+import SimpleCard from '@/Components/BS/SimpleCard.vue';
 
 defineProps({
-    mustVerifyEmail: Boolean,
-    status: Boolean,
+  mustVerifyEmail: Boolean,
+  status: String,
 });
 </script>
 
 <template>
-  <InertiaHead title="Profile" />
+  <InertiaHead :title="trans('Profile')" />
 
   <AuthenticatedLayout>
     <template #header>
-      <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        Profile
-      </h2>
+      {{ trans('Profile') }}
     </template>
 
-    <div class="py-12">
-      <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-        <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+    <div class="py-0">
+      <SimpleCard>
+        <template #body>
           <UpdateProfileInformationForm
             :must-verify-email="mustVerifyEmail"
             :status="status"
-            class="max-w-xl"
           />
-        </div>
+        </template>
+      </SimpleCard>
 
-        <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-          <UpdatePasswordForm class="max-w-xl" />
-        </div>
+      <SimpleCard>
+        <template #body>
+          <UpdatePasswordForm />
+        </template>
+      </SimpleCard>
 
-        <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-          <DeleteUserForm class="max-w-xl" />
-        </div>
-      </div>
+      <SimpleCard>
+        <template #body>
+          <DeleteUserForm />
+        </template>
+      </SimpleCard>
     </div>
   </AuthenticatedLayout>
 </template>

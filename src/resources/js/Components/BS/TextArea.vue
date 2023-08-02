@@ -9,9 +9,9 @@ defineEmits(['update:modelValue']);
 const textarea = ref(null);
 
 onMounted(() => {
-    if (textarea.value.hasAttribute('autofocus')) {
-        textarea.value.focus();
-    }
+  if (textarea.value.hasAttribute('autofocus')) {
+    textarea.value.focus();
+  }
 });
 
 defineExpose({ focus: () => textarea.value.focus() });
@@ -19,7 +19,9 @@ defineExpose({ focus: () => textarea.value.focus() });
 
 <template>
   <div class="mb-3">
-    <label :for="id">{{ trans(label) }}</label>
+    <label class="px-2" :for="id">
+      {{ trans(label) }}
+    </label>
     <textarea
       :id="id"
       ref="textarea"
@@ -28,10 +30,7 @@ defineExpose({ focus: () => textarea.value.focus() });
       :value="modelValue"
       @input="$emit('update:modelValue', $event.target.value)"
     />
-    <div
-      v-if="errors && errors[id]"
-      class="invalid-feedback"
-    >
+    <div v-if="errors && errors[id]" class="invalid-feedback">
       {{ trans(errors[id]) }}
     </div>
   </div>

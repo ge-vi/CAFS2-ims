@@ -1,24 +1,22 @@
 <script setup>
-import {Head as InertiaHead, useForm} from '@inertiajs/vue3';
+import { Head as InertiaHead, useForm } from '@inertiajs/vue3';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
+import { trans } from 'laravel-vue-i18n';
 
 const form = useForm({
   name: '',
   email: '',
-  phone: ''
+  phone: '',
 });
-
 </script>
 
 <template>
-  <InertiaHead title="Create owner" />
+  <InertiaHead :title="trans('Create owner')" />
 
   <AuthenticatedLayout>
-    <template #header>
-      Create owner
-    </template>
+    <template #header> Create owner </template>
 
     <div class="card shadow">
       <div class="card-body">
@@ -27,14 +25,14 @@ const form = useForm({
             id="name"
             v-model="form.name"
             :errors="form.errors"
-            label="Name"
+            input-label="Name"
           />
 
           <TextInput
             id="email"
             v-model="form.email"
             :errors="form.errors"
-            label="Email"
+            input-label="Email"
             type="email"
           />
 
@@ -42,7 +40,7 @@ const form = useForm({
             id="phone"
             v-model="form.phone"
             :errors="form.errors"
-            label="Phone"
+            input-label="Phone"
           />
 
           <PrimaryButton :disabled="form.processing">

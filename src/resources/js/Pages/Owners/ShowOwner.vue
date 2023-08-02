@@ -1,39 +1,29 @@
 <script setup>
-import {Head as InertiaHead, Link} from '@inertiajs/vue3';
+import { Head as InertiaHead, Link } from '@inertiajs/vue3';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import { trans } from 'laravel-vue-i18n';
 
 defineProps(['owner', 'items', 'faults']);
 </script>
 
 <template>
-  <InertiaHead title="Owner info"/>
+  <InertiaHead :title="trans('Owner info')" />
 
   <AuthenticatedLayout>
-    <template #header>
-      Owner info with owned items
-    </template>
+    <template #header> Owner info with owned items </template>
 
     <div class="row">
       <div class="col">
         <div class="card mb-3">
           <div class="card-body">
-            <p
-              v-if="owner.name"
-              class="m-0"
-            >
-              <small class="text-muted">name</small><br>{{ owner.name }}
+            <p v-if="owner.name" class="m-0">
+              <small class="text-muted">name</small><br />{{ owner.name }}
             </p>
-            <p
-              v-if="owner.email"
-              class="m-0"
-            >
-              <small class="text-muted">email</small><br>{{ owner.email }}
+            <p v-if="owner.email" class="m-0">
+              <small class="text-muted">email</small><br />{{ owner.email }}
             </p>
-            <p
-              v-if="owner.phone"
-              class="m-0"
-            >
-              <small class="text-muted">phone</small><br>{{ owner.phone }}
+            <p v-if="owner.phone" class="m-0">
+              <small class="text-muted">phone</small><br />{{ owner.phone }}
             </p>
           </div>
           <div class="card-footer">
@@ -66,10 +56,7 @@ defineProps(['owner', 'items', 'faults']);
             </tr>
           </thead>
           <tbody>
-            <tr
-              v-for="(item, index) in items"
-              :key="item.id"
-            >
+            <tr v-for="(item, index) in items" :key="item.id">
               <td>{{ ++index }}</td>
               <td>{{ item?.name }}</td>
               <td>{{ item?.description }}</td>
@@ -107,10 +94,7 @@ defineProps(['owner', 'items', 'faults']);
             </tr>
           </thead>
           <tbody>
-            <tr
-              v-for="(item, index) in faults"
-              :key="item.id"
-            >
+            <tr v-for="(item, index) in faults" :key="item.id">
               <td>{{ ++index }}</td>
               <td>{{ item?.name }}</td>
               <td>{{ item?.description }}</td>

@@ -3,37 +3,40 @@ import GuestLayout from '@/Layouts/GuestLayout.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head as InertiaHead, useForm } from '@inertiajs/vue3';
+import { trans } from 'laravel-vue-i18n';
 
 defineProps({
-    status: String,
+  status: String,
 });
 
 const form = useForm({
-    email: '',
+  email: '',
 });
 
 const submit = () => {
-    form.post(route('password.email'));
+  form.post(route('password.email'));
 };
 </script>
 
 <template>
   <GuestLayout>
-    <InertiaHead title="Forgot Password" />
+    <InertiaHead :title="trans('Forgot Password')" />
 
     <div class="card my-5 shadow">
       <div class="card-body">
-        {{ $t('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+        {{
+          trans(
+            'Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.'
+          )
+        }}
       </div>
 
-      <div
-        v-if="status"
-        class="card-body"
-      >
+      <div v-if="status" class="card-body">
         <div class="alert alert-primary my-2">
           {{ status }}
         </div>
-      </div> <!--.card-body-->
+      </div>
+      <!--.card-body-->
 
       <form @submit.prevent="submit">
         <div class="card-body">
@@ -41,7 +44,7 @@ const submit = () => {
             id="email"
             v-model="form.email"
             type="email"
-            label="Email"
+            input-label="Email"
             :errors="form.errors.email"
             required
             autofocus
@@ -53,7 +56,7 @@ const submit = () => {
             :class="{ 'opacity-25': form.processing }"
             :disabled="form.processing"
           >
-            {{ $t('Email Password Reset Link') }}
+            {{ trans('Email Password Reset Link') }}
           </PrimaryButton>
         </div>
       </form>
