@@ -31,4 +31,20 @@ class StoreDemandRequest extends FormRequest
             'owner_phone' => ['required', 'numeric'],
         ];
     }
+
+    /**
+     * @inheritDoc
+     *
+     * @return array
+     */
+    public function attributes(): array
+    {
+        return [
+            'item_name' => __('Item name'),
+            'item_description' => __('Item description'),
+            'owner_name' => __('Your name'),
+            'owner_email' => __('Your email'),
+            'owner_phone' => __('Your phone (only numbers)')
+        ];
+    }
 }

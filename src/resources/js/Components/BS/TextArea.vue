@@ -6,6 +6,7 @@ defineProps([
   'modelValue',
   'id',
   'textareaLabel',
+  'textareaPlaceholder',
   'rows',
   'errors'
 ]);
@@ -37,6 +38,7 @@ defineExpose({ focus: () => textarea.value.focus() });
       class="form-control"
       :rows="rows ?? 3"
       :value="modelValue"
+      :placeholder="textareaPlaceholder"
       @input="$emit('update:modelValue', $event.target.value)"
     />
     <div

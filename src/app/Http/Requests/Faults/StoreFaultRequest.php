@@ -33,10 +33,20 @@ class StoreFaultRequest extends FormRequest
         ];
     }
 
-    public function messages()
+    /**
+     * @inheritDoc
+     *
+     * @return array
+     */
+    public function attributes(): array
     {
         return [
-            'fault_description' => 'Please write a more detailed fault description. It should be at least 15 characters long.'
+            'fault_name' => __('Fault name'),
+            'fault_description' => __('Broken item fault description'),
+            'fault_inv' => __('Item INV number'),
+            'owner_name' => __('Your name'),
+            'owner_email' => __('Your email'),
+            'owner_phone' => __('Your phone (only numbers)'),
         ];
     }
 }

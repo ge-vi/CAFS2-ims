@@ -134,7 +134,7 @@ const formRepair = useForm({
               v-model="formRepair.fault_description"
               :errors="formRepair.errors"
               textarea-label="Broken item fault description"
-              placeholder="Short description what is not good with device or not working."
+              textarea-placeholder="Description what is not good with device or not working."
             />
             <TextInput
               id="fault_inv"
