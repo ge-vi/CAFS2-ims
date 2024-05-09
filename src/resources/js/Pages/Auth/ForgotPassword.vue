@@ -31,7 +31,10 @@ const submit = () => {
         }}
       </div>
 
-      <div v-if="status" class="card-body">
+      <div
+        v-if="status"
+        class="card-body"
+      >
         <div class="alert alert-primary my-2">
           {{ status }}
         </div>

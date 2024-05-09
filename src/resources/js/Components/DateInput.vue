@@ -1,7 +1,8 @@
 <script setup>
 import { onMounted, ref } from 'vue';
+import {trans} from "laravel-vue-i18n";
 
-defineProps(['modelValue', 'id', 'label', 'errors']);
+defineProps(['modelValue', 'id', 'inputLabel', 'errors']);
 
 defineEmits(['update:modelValue']);
 
@@ -18,7 +19,13 @@ defineExpose({ focus: () => input.value.focus() });
 
 <template>
   <div class="mb-3">
-    <label :for="id">{{ label }}</label>
+    <label
+      class="px-2"
+      :for="id"
+    >
+      {{ trans(inputLabel) }}
+    </label>
+
     <input
       :id="id"
       ref="input"

@@ -1,12 +1,26 @@
 <script setup>
-defineProps(['modelValue', 'options', 'id', 'label', 'errors']);
+import {trans} from "laravel-vue-i18n";
+
+defineProps([
+    'modelValue',
+    'options',
+    'id',
+    'inputLabel',
+    'errors'
+]);
 
 defineEmits(['update:modelValue']);
 </script>
 
 <template>
   <div class="mb-3">
-    <label :for="id">{{ label }}</label>
+    <label
+      class="px-2"
+      :for="id"
+    >
+      {{ trans(inputLabel) }}
+    </label>
+
     <select
       :id="id"
       :value="modelValue"

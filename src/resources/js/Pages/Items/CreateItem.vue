@@ -24,7 +24,9 @@ const form = useForm({
   <InertiaHead :title="trans('Create new item')" />
 
   <AuthenticatedLayout>
-    <template #header> Create new item </template>
+    <template #header>
+      Create new item
+    </template>
 
     <div class="card shadow">
       <div class="card-body">
@@ -33,7 +35,7 @@ const form = useForm({
             id="name"
             v-model="form.name"
             :errors="form.errors"
-            input-label="Name"
+            input-label="Item name"
           />
 
           <InputOptions

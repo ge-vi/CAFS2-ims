@@ -76,6 +76,7 @@ const formRepair = useForm({
               v-model="formDemand.item_description"
               :errors="formDemand.errors"
               textarea-label="Item description"
+              textarea-placeholder="Item description"
             />
           </div>
           <div class="card-body">
@@ -125,6 +126,7 @@ const formRepair = useForm({
             <TextInput
               id="fault_name"
               v-model="formRepair.fault_name"
+              class="text-light"
               :errors="formRepair.errors"
               input-label="Fault name"
               help-text="Broken equipment name like: phone, laptop, etc."
@@ -132,13 +134,15 @@ const formRepair = useForm({
             <TextArea
               id="fault_description"
               v-model="formRepair.fault_description"
+              class="text-light"
               :errors="formRepair.errors"
               textarea-label="Broken item fault description"
-              textarea-placeholder="Description what is not good with device or not working."
+              textarea-placeholder="Describe what is not good with device or not working."
             />
             <TextInput
               id="fault_inv"
               v-model="formRepair.fault_inv"
+              class="text-light"
               :errors="formRepair.errors"
               input-label="Item INV number"
               help-text="Item INV-xxxxx number from the label if exists."
@@ -148,18 +152,21 @@ const formRepair = useForm({
             <TextInput
               id="owner_name"
               v-model="formRepair.owner_name"
+              class="text-light"
               :errors="formRepair.errors"
               input-label="Your name"
             />
             <TextInput
               id="owner_email"
               v-model="formRepair.owner_email"
+              class="text-light"
               :errors="formRepair.errors"
               input-label="Your email"
             />
             <TextInput
               id="owner_phone"
               v-model="formRepair.owner_phone"
+              class="text-light"
               :errors="formRepair.errors"
               input-label="Your phone (only numbers)"
             />

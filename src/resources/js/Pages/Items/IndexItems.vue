@@ -11,14 +11,23 @@ defineProps(['items']);
   <InertiaHead :title="trans('Items list')" />
 
   <AuthenticatedLayout>
-    <template #header> Items list </template>
+    <template #header>
+      Items list
+    </template>
 
-    <Link :href="route('items.create')" class="btn btn-outline-primary">
+    <Link
+      :href="route('items.create')"
+      class="btn btn-outline-primary"
+    >
       Create new item
     </Link>
 
     <div class="row row-cols-1 row-cols-md-2">
-      <InventoryItem v-for="item in items.data" :key="item.id" :item="item" />
+      <InventoryItem
+        v-for="item in items.data"
+        :key="item.id"
+        :item="item"
+      />
     </div>
   </AuthenticatedLayout>
 </template>

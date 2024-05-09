@@ -38,7 +38,7 @@ defineExpose({ focus: () => textarea.value.focus() });
       class="form-control"
       :rows="rows ?? 3"
       :value="modelValue"
-      :placeholder="textareaPlaceholder"
+      :placeholder="trans(textareaPlaceholder)"
       @input="$emit('update:modelValue', $event.target.value)"
     />
     <div

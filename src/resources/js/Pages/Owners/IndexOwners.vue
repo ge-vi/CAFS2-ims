@@ -10,9 +10,12 @@ defineProps(['owners']);
   <InertiaHead :title="trans('Owners list')" />
 
   <AuthenticatedLayout>
-    <template #header> Owners list </template>
+    <template #header>Owners list</template>
 
-    <Link :href="route('owners.create')" class="btn btn-outline-primary">
+    <Link
+      :href="route('owners.create')"
+      class="btn btn-outline-primary my-2"
+    >
       Create new owner
     </Link>
 
@@ -28,7 +31,10 @@ defineProps(['owners']);
             </tr>
           </thead>
           <tbody>
-            <tr v-for="owner in owners" :key="owners.id">
+            <tr
+              v-for="owner in owners"
+              :key="owners.id"
+            >
               <td>{{ owner.name }}</td>
               <td>{{ owner.email }}</td>
               <td>{{ owner.phone }}</td>
