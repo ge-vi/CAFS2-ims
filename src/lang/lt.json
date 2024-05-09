@@ -79,11 +79,15 @@
     "Your name": "Tavo vardas",
     "Your email": "Tavo el. pašto adresas",
     "Your phone (only numbers)": "Tavo telefono numeris (tik skaičiai)",
+    "Phone": "Telefono numeris",
     "Submit new demand": "Pateikti užsakymą",
     "Register broken equipment": "Pranešti apie sugedusią įrangą",
     "Fault name": "Sugedusios įrangos pavadinimas",
+    "Broken equipment name like: phone, laptop, etc." : "Sugedusios įrangos pavadinimas, pvz.: telefonas, nešiojamas kompiuteris ir kt.",
     "Broken item fault description": "Gedimo aprašymas",
     "Item INV number": "Įrangos INV numeris",
+    "Item INV-xxxxx number from the label if exists.": "Jeigu yra įrangos INV-xxxxx numeris ant etiketės.",
     "Register for inspection": "Registruoti patikrinimui",
-    "Describe what is not good with device or not working.": "Apibūdinkite, kas su įrenginiu negerai arba neveikia."
+    "Describe what is not good with device or not working.": "Apibūdinkite, kas su įrenginiu negerai arba neveikia.",
+    "Owner": "Savininkas"
 }
