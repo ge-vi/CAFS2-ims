@@ -2,12 +2,10 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DemandController;
-use App\Http\Controllers\FaultController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\OwnersController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TypesController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -34,9 +32,6 @@ Route::get('/', function () {
 
 Route::post('/demand', [DemandController::class, 'store'])
     ->name('demand.store');
-
-Route::post('/repair', [FaultController::class, 'store'])
-    ->name('repair.store');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth'])

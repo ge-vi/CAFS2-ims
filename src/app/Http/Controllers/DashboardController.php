@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Fault;
 use App\Models\Item;
 use App\Models\Owner;
 use App\Models\Type;
@@ -17,14 +16,12 @@ class DashboardController extends Controller
         $owners['last'] = Owner::latest()->first();
 
         $itemsCount = Item::all()->count();
-        $faultsCount = Fault::all()->count();
         $typesCount = Type::all()->count();
 
         return Inertia::render('Dashboard',
             compact(
                 'owners',
                 'itemsCount',
-                'faultsCount',
                 'typesCount'
             )
         );

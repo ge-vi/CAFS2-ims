@@ -5,7 +5,7 @@ import NavButton from '@/Components/BS/NavButton.vue';
 import SimpleCard from '@/Components/BS/SimpleCard.vue';
 import { trans } from 'laravel-vue-i18n';
 
-defineProps(['owners', 'itemsCount', 'faultsCount', 'typesCount']);
+defineProps(['owners', 'itemsCount', 'typesCount']);
 </script>
 
 <template>
@@ -14,7 +14,7 @@ defineProps(['owners', 'itemsCount', 'faultsCount', 'typesCount']);
   <AuthenticatedLayout>
     <template #header> Dashboard </template>
 
-    <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4">
+    <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3">
       <div class="col">
         <SimpleCard>
           <template #header> Owners stats </template>
@@ -50,15 +50,6 @@ defineProps(['owners', 'itemsCount', 'faultsCount', 'typesCount']);
           </template>
           <template #footer>
             <NavButton :href="route('types.index')"> All types </NavButton>
-          </template>
-        </SimpleCard>
-      </div>
-
-      <div class="col">
-        <SimpleCard>
-          <template #header> Repairs stats </template>
-          <template #body>
-            <p>We have {{ faultsCount }} items for repair.</p>
           </template>
         </SimpleCard>
       </div>

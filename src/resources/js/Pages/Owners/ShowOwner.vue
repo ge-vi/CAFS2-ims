@@ -3,7 +3,7 @@ import { Head as InertiaHead, Link } from '@inertiajs/vue3';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { trans } from 'laravel-vue-i18n';
 
-defineProps(['owner', 'items', 'faults']);
+defineProps(['owner', 'items']);
 </script>
 
 <template>
@@ -38,7 +38,7 @@ defineProps(['owner', 'items', 'faults']);
       </div>
     </div>
 
-    <div class="row">
+    <div class="row mt-5">
       <div class="col">
         <h4>Items owned by: {{ owner.name }}</h4>
 
@@ -49,6 +49,7 @@ defineProps(['owner', 'items', 'faults']);
           <thead>
             <tr>
               <th>#</th>
+              <th>INV #</th>
               <th>Name</th>
               <th>Description</th>
               <th>Type</th>
@@ -58,6 +59,7 @@ defineProps(['owner', 'items', 'faults']);
           <tbody>
             <tr v-for="(item, index) in items" :key="item.id">
               <td>{{ ++index }}</td>
+              <td>{{ item?.inv }}</td>
               <td>{{ item?.name }}</td>
               <td>{{ item?.description }}</td>
               <td>{{ item?.type?.name }}</td>
@@ -69,36 +71,6 @@ defineProps(['owner', 'items', 'faults']);
                   edit
                 </Link>
               </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <!--col-->
-    </div>
-    <!--row-->
-
-    <div class="row">
-      <div class="col">
-        <h4>Registered faults by: {{ owner.name }}</h4>
-
-        <table
-          v-if="faults"
-          class="table table-striped table-hover align-middle"
-        >
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>Description</th>
-              <th>Service info</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(item, index) in faults" :key="item.id">
-              <td>{{ ++index }}</td>
-              <td>{{ item?.name }}</td>
-              <td>{{ item?.description }}</td>
-              <td>{{ item?.service_info }}</td>
             </tr>
           </tbody>
         </table>

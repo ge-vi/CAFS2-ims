@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Owners\StoreOwnerRequest;
 use App\Http\Resources\OwnerResource;
-use App\Models\Fault;
 use App\Models\Item;
 use App\Models\Owner;
 use Illuminate\Http\RedirectResponse;
@@ -56,16 +55,17 @@ class OwnersController extends Controller
     public function show(Owner $owner): InertiaResponse
     {
         $items = Item::where('owner_id', $owner->id)
-            ->with('type')
-            ->get();
-
-        $faults = Fault::where('owner_id', $owner->id)
-            ->get();
+        ->with('type')
+        ->get()
+        ->map(function ($e) {
+            // get data before 'eloquent models' convert to JSON
+            $e->inv = $e->inv;
+            return $e;
+        });
 
         return Inertia::render('Owners/ShowOwner', [
             'owner' => $owner,
             'items' => $items,
-            'faults' => $faults,
         ]);
     }
 

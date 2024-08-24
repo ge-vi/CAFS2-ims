@@ -17,15 +17,6 @@ const formDemand = useForm({
   owner_email: '',
   owner_phone: '',
 });
-
-const formRepair = useForm({
-  fault_name: '',
-  fault_description: '',
-  fault_inv: '',
-  owner_name: '',
-  owner_email: '',
-  owner_phone: '',
-});
 </script>
 
 <template>
@@ -102,78 +93,6 @@ const formRepair = useForm({
           <div class="card-footer">
             <PrimaryButton :disabled="formDemand.processing">
               {{ trans('Submit new demand') }}
-            </PrimaryButton>
-          </div>
-        </form>
-      </div>
-    </div>
-    <!--right column-->
-    <div class="col">
-      <div class="card text-bg-dark">
-        <div class="card-header">
-          <h2 class="text-center">
-            {{ trans('Register broken equipment') }}
-          </h2>
-        </div>
-        <form
-          @submit.prevent="
-            formRepair.post(route('repair.store'), {
-              onSuccess: () => formRepair.reset(),
-            })
-          "
-        >
-          <div class="card-body">
-            <TextInput
-              id="fault_name"
-              v-model="formRepair.fault_name"
-              class="text-light"
-              :errors="formRepair.errors"
-              input-label="Fault name"
-              help-text="Broken equipment name like: phone, laptop, etc."
-            />
-            <TextArea
-              id="fault_description"
-              v-model="formRepair.fault_description"
-              class="text-light"
-              :errors="formRepair.errors"
-              textarea-label="Broken item fault description"
-              textarea-placeholder="Describe what is not good with device or not working."
-            />
-            <TextInput
-              id="fault_inv"
-              v-model="formRepair.fault_inv"
-              class="text-light"
-              :errors="formRepair.errors"
-              input-label="Item INV number"
-              help-text="Item INV-xxxxx number from the label if exists."
-            />
-          </div>
-          <div class="card-body">
-            <TextInput
-              id="owner_name"
-              v-model="formRepair.owner_name"
-              class="text-light"
-              :errors="formRepair.errors"
-              input-label="Your name"
-            />
-            <TextInput
-              id="owner_email"
-              v-model="formRepair.owner_email"
-              class="text-light"
-              :errors="formRepair.errors"
-              input-label="Your email"
-            />
-            <TextInput
-              id="owner_phone"
-              v-model="formRepair.owner_phone"
-              class="text-light"
-              :errors="formRepair.errors"
-              input-label="Your phone (only numbers)"
-            />
-          </div>
-          <div class="card-footer">
-            <PrimaryButton :disabled="formRepair.processing">
-              {{ trans('Register for inspection') }}
             </PrimaryButton>
           </div>
         </form>
