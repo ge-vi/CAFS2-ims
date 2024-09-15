@@ -33,7 +33,10 @@ const form = useForm({
       </p>
     </header>
 
-    <form class="mt-4" @submit.prevent="form.patch(route('profile.update'))">
+    <form
+      class="mt-4"
+      @submit.prevent="form.patch(route('profile.update'))"
+    >
       <TextInput
         id="name"
         v-model="form.name"
@@ -44,7 +47,10 @@ const form = useForm({
         autofocus
         autocomplete="name"
       />
-      <InputError class="mb-4" :message="form.errors.name" />
+      <InputError
+        class="mb-4"
+        :message="form.errors.name"
+      />
 
       <TextInput
         id="email"
@@ -56,12 +62,19 @@ const form = useForm({
         required
         autocomplete="email"
       />
-      <InputError class="mb-4" :message="form.errors.email" />
+      <InputError
+        class="mb-4"
+        :message="form.errors.email"
+      />
 
       <div v-if="props.mustVerifyEmail && user.email_verified_at === null">
         <p class="text-sm mt-2">
           {{ trans('Your email address is unverified.') }}
-          <Link :href="route('verification.send')" method="post" :as="button">
+          <Link
+            :href="route('verification.send')"
+            method="post"
+            :as="button"
+          >
             {{ trans('Click here to re-send the verification email.') }}
           </Link>
         </p>
@@ -85,7 +98,10 @@ const form = useForm({
           leave-to-class="opacity-0"
           class="transition ease-in-out"
         >
-          <p v-if="form.recentlySuccessful" class="text-sm">
+          <p
+            v-if="form.recentlySuccessful"
+            class="text-sm"
+          >
             {{ trans('Saved.') }}
           </p>
         </Transition>

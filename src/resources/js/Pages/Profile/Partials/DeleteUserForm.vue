@@ -57,7 +57,10 @@ const closeModal = () => {
       {{ trans('Delete Account') }}
     </DangerButton>
 
-    <Modal :show="confirmingUserDeletion" @close="closeModal">
+    <Modal
+      :show="confirmingUserDeletion"
+      @close="closeModal"
+    >
       <div class="p-6">
         <h2>
           {{ trans('Are you sure your want to delete your account?') }}
@@ -81,7 +84,10 @@ const closeModal = () => {
           @keyup.enter="deleteUser"
         />
 
-        <InputError :message="form.errors.password" class="mt-2" />
+        <InputError
+          :message="form.errors.password"
+          class="mt-2"
+        />
 
         <div class="mt-6 flex justify-end">
           <SecondaryButton @click="closeModal">

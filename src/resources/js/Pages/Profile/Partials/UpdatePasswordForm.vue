@@ -49,7 +49,10 @@ const updatePassword = () => {
       </p>
     </header>
 
-    <form class="mt-4" @submit.prevent="updatePassword">
+    <form
+      class="mt-4"
+      @submit.prevent="updatePassword"
+    >
       <TextInput
         id="current_password"
         ref="currentPasswordInput"
@@ -59,7 +62,10 @@ const updatePassword = () => {
         help-text="Your current password"
         autocomplete="current-password"
       />
-      <InputError class="mb-4" :message="form.errors.current_password" />
+      <InputError
+        class="mb-4"
+        :message="form.errors.current_password"
+      />
 
       <TextInput
         id="password"
@@ -70,7 +76,10 @@ const updatePassword = () => {
         help-text="Type new password"
         autocomplete="new-password"
       />
-      <InputError :message="form.errors.password" class="mt-2" />
+      <InputError
+        :message="form.errors.password"
+        class="mt-2"
+      />
 
       <TextInput
         id="password_confirmation"
@@ -80,7 +89,10 @@ const updatePassword = () => {
         help-text="Repeat new password"
         autocomplete="new-password"
       />
-      <InputError :message="form.errors.password_confirmation" class="mt-2" />
+      <InputError
+        :message="form.errors.password_confirmation"
+        class="mt-2"
+      />
 
       <div class="flex items-center gap-4">
         <PrimaryButton :disabled="form.processing">
@@ -92,7 +104,10 @@ const updatePassword = () => {
           leave-to-class="opacity-0"
           class="transition ease-in-out"
         >
-          <p v-if="form.recentlySuccessful" class="text-sm text-gray-600">
+          <p
+            v-if="form.recentlySuccessful"
+            class="text-sm text-gray-600"
+          >
             {{ trans('Saved.') }}
           </p>
         </Transition>

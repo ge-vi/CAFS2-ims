@@ -118,7 +118,11 @@ const formDemand = useForm({
         >
           {{ trans('Dashboard') }}
         </Link>
-        <Link v-else :href="route('login')" class="btn btn-outline-primary">
+        <Link
+          v-else
+          :href="route('login')"
+          class="btn btn-outline-primary"
+        >
           {{ trans('Log in') }}
         </Link>
       </template>

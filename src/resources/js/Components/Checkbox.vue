@@ -38,8 +38,11 @@ const proxyChecked = computed({
       class="form-check-input"
       type="checkbox"
       role="switch"
-    />
-    <label class="form-check-label" for="flexSwitchCheckDefault">{{
+    >
+    <label
+      class="form-check-label"
+      for="flexSwitchCheckDefault"
+    >{{
       trans(labelText)
     }}</label>
   </div>

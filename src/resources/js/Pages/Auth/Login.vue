@@ -31,7 +31,10 @@ const submit = () => {
     <InertiaHead :title="trans('Log in')" />
 
     <div class="card my-5 shadow">
-      <div v-if="status" class="card-body">
+      <div
+        v-if="status"
+        class="card-body"
+      >
         <div class="mb-4">
           {{ status }}
         </div>

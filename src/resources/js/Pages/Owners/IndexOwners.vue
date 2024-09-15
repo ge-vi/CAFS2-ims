@@ -10,7 +10,9 @@ defineProps(['owners']);
   <InertiaHead :title="trans('Owners list')" />
 
   <AuthenticatedLayout>
-    <template #header>Owners list</template>
+    <template #header>
+      Owners list
+    </template>
 
     <Link
       :href="route('owners.create')"

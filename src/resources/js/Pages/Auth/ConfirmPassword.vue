@@ -40,7 +40,10 @@ const submit = () => {
           autocomplete="current-password"
           autofocus
         />
-        <InputError class="mb-4" :message="form.errors.password" />
+        <InputError
+          class="mb-4"
+          :message="form.errors.password"
+        />
       </div>
 
       <div class="flex justify-end mt-4">

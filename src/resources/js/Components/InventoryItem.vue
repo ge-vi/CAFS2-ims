@@ -46,7 +46,7 @@ const editItem = () => {
                 href="#"
                 title="Edit this item"
                 @click.prevent="editItem"
-                >
+              >
                 Edit item
               </a>
             </li>
@@ -68,32 +68,27 @@ const editItem = () => {
       <template #body>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">
-            <small class="text-muted">inv:<br /></small>
+            <small class="text-muted">inv:<br></small>
             {{ props.item.inv }}
           </li>
           <li class="list-group-item">
-            <small class="text-muted">name:<br /></small>
+            <small class="text-muted">name:<br></small>
             {{ item?.name }}
           </li>
           <li class="list-group-item">
-            <small class="text-muted">description:<br /></small
-            >{{ item?.description }}
+            <small class="text-muted">description:<br></small>{{ item?.description }}
           </li>
           <li class="list-group-item">
-            <small class="text-muted">warranty:<br /></small
-            >{{ item?.warranty_months }} months
+            <small class="text-muted">warranty:<br></small>{{ item?.warranty_months }} months
           </li>
           <li class="list-group-item">
-            <small class="text-muted">EOL:<br /></small
-            >{{ item?.type?.period - item?.warranty_months }} months
+            <small class="text-muted">EOL:<br></small>{{ item?.type?.period - item?.warranty_months }} months
           </li>
           <li class="list-group-item">
-            <small class="text-muted">owner's name<br /></small
-            >{{ item?.owner?.name }}
+            <small class="text-muted">owner's name<br></small>{{ item?.owner?.name }}
           </li>
           <li class="list-group-item">
-            <small class="text-muted">owner's email:<br /></small
-            >{{ item?.owner?.email }}
+            <small class="text-muted">owner's email:<br></small>{{ item?.owner?.email }}
           </li>
         </ul>
       </template>

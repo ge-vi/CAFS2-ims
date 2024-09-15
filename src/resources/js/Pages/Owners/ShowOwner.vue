@@ -10,20 +10,31 @@ defineProps(['owner', 'items']);
   <InertiaHead :title="trans('Owner info')" />
 
   <AuthenticatedLayout>
-    <template #header> Owner info with owned items </template>
+    <template #header>
+      Owner info with owned items
+    </template>
 
     <div class="row">
       <div class="col">
         <div class="card mb-3">
           <div class="card-body">
-            <p v-if="owner.name" class="m-0">
-              <small class="text-muted">name</small><br />{{ owner.name }}
+            <p
+              v-if="owner.name"
+              class="m-0"
+            >
+              <small class="text-muted">name</small><br>{{ owner.name }}
             </p>
-            <p v-if="owner.email" class="m-0">
-              <small class="text-muted">email</small><br />{{ owner.email }}
+            <p
+              v-if="owner.email"
+              class="m-0"
+            >
+              <small class="text-muted">email</small><br>{{ owner.email }}
             </p>
-            <p v-if="owner.phone" class="m-0">
-              <small class="text-muted">phone</small><br />{{ owner.phone }}
+            <p
+              v-if="owner.phone"
+              class="m-0"
+            >
+              <small class="text-muted">phone</small><br>{{ owner.phone }}
             </p>
           </div>
           <div class="card-footer">
@@ -57,7 +68,10 @@ defineProps(['owner', 'items']);
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(item, index) in items" :key="item.id">
+            <tr
+              v-for="(item, index) in items"
+              :key="item.id"
+            >
               <td>{{ ++index }}</td>
               <td>{{ item?.inv }}</td>
               <td>{{ item?.name }}</td>

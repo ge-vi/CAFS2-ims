@@ -20,7 +20,9 @@ const deleteOwner = () => {
   <InertiaHead :title="trans('Edit owner')" />
 
   <AuthenticatedLayout>
-    <template #header> Edit owner </template>
+    <template #header>
+      Edit owner
+    </template>
 
     <div class="card shadow">
       <form
@@ -48,8 +50,8 @@ const deleteOwner = () => {
             :errors="ownerForm.errors"
             input-label="Phone"
           />
-        </div>
-        <!--card-body-->
+        </div> <!-- /card-body -->
+
         <div class="card-footer d-flex justify-content-between">
           <PrimaryButton :disabled="ownerForm.processing">
             Update owner

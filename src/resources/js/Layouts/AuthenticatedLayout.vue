@@ -6,7 +6,12 @@ import ButtonLink from '@/Components/BS/ButtonLink.vue';
 <template>
   <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
-      <Link class="navbar-brand" :href="'/'"> IMS </Link>
+      <Link
+        class="navbar-brand"
+        :href="'/'"
+      >
+        IMS
+      </Link>
       <button
         class="navbar-toggler"
         type="button"
@@ -18,19 +23,42 @@ import ButtonLink from '@/Components/BS/ButtonLink.vue';
       >
         <span class="navbar-toggler-icon" />
       </button>
-      <div id="navbarSupportedContent" class="collapse navbar-collapse">
+      <div
+        id="navbarSupportedContent"
+        class="collapse navbar-collapse"
+      >
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <Link class="nav-link" :href="route('dashboard')"> Dashboard </Link>
+            <Link
+              class="nav-link"
+              :href="route('dashboard')"
+            >
+              Dashboard
+            </Link>
           </li>
           <li class="nav-item">
-            <Link class="nav-link" :href="route('types.index')"> Types </Link>
+            <Link
+              class="nav-link"
+              :href="route('types.index')"
+            >
+              Types
+            </Link>
           </li>
           <li class="nav-item">
-            <Link class="nav-link" :href="route('items.index')"> Items </Link>
+            <Link
+              class="nav-link"
+              :href="route('items.index')"
+            >
+              Items
+            </Link>
           </li>
           <li class="nav-item">
-            <Link class="nav-link" :href="route('owners.index')"> Owners </Link>
+            <Link
+              class="nav-link"
+              :href="route('owners.index')"
+            >
+              Owners
+            </Link>
           </li>
         </ul>
 

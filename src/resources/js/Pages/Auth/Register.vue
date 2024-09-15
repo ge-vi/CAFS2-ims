@@ -29,7 +29,10 @@ const submit = () => {
     <InertiaHead :title="trans('Register')" />
 
     <div class="card my-5 shadow">
-      <div v-if="status" class="card-body">
+      <div
+        v-if="status"
+        class="card-body"
+      >
         <div class="mb-4">
           {{ status }}
         </div>
@@ -82,7 +85,12 @@ const submit = () => {
         <!--card-body-->
 
         <div class="card-footer">
-          <Link :href="route('login')" class="pe-2"> Already registered? </Link>
+          <Link
+            :href="route('login')"
+            class="pe-2"
+          >
+            Already registered?
+          </Link>
 
           <PrimaryButton
             class="ml-4"

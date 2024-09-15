@@ -16,7 +16,9 @@ const form = useForm({
   <InertiaHead :title="trans('Create owner')" />
 
   <AuthenticatedLayout>
-    <template #header> Create owner </template>
+    <template #header>
+      Create owner
+    </template>
 
     <div class="card shadow">
       <div class="card-body">
