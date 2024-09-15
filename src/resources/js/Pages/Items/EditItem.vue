@@ -1,26 +1,37 @@
 <script setup>
-import { Head as InertiaHead, useForm } from '@inertiajs/vue3';
+import { Head as InertiaHead, router, useForm } from '@inertiajs/vue3';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import DateInput from '@/Components/DateInput.vue';
 import InputOptions from '@/Components/BS/InputOptions.vue';
+import ButtonLink from '@/Components/BS/ButtonLink.vue';
 import { trans } from 'laravel-vue-i18n';
 
 const props = defineProps(['item', 'owners', 'types']);
 
 const form = useForm(props.item.data);
+
+const deleteItem = () => {
+  router.delete(route('items.destroy', form), {
+    onBefore: () => confirm('Are you sure you want to delete this item?'),
+  });
+};
 </script>
 
 <template>
   <InertiaHead :title="trans('Edit item')" />
 
   <AuthenticatedLayout>
-    <template #header> Edit item: {{ form.inv }} </template>
+    <template #header>
+      Edit item: {{ form.inv }}
+    </template>
 
     <div class="card shadow">
-      <div class="card-body">
-        <form @submit.prevent="form.put(route('items.update', form.id))">
+      <form 
+        @submit.prevent="form.put(route('items.update', form.id))"
+      >
+        <div class="card-body">
           <TextInput
             id="name"
             v-model="form.name"
@@ -69,12 +80,24 @@ const form = useForm(props.item.data);
             :errors="form.errors"
             input-label="Warranty proof"
           />
+        </div> <!-- /card-body -->
 
+        <div class="card-footer d-flex justify-content-between">
           <PrimaryButton :disabled="form.processing">
             Update item
           </PrimaryButton>
-        </form>
-      </div>
+
+          <ButtonLink
+            as="button"
+            href="#"
+            class="btn-danger"
+            title="Delete this item"
+            @click.prevent="deleteItem"
+          >
+            Delete item
+          </ButtonLink>
+        </div> <!-- /card-footer -->
+      </form>
     </div>
   </AuthenticatedLayout>
 </template>
