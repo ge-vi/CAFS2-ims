@@ -70,16 +70,6 @@ class ItemsController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Item $item)
-    {
-        // ???
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(Item $item): InertiaResponse
@@ -123,10 +113,18 @@ class ItemsController extends Controller
      */
     public function destroy(Item $item)
     {
-        $item->delete();
+        try {
+
+            $item->delete();
+
+        } catch (\Exception $e) {
+            return redirect()
+                ->route('items.index', $item)
+                ->with('message', sprintf('Item "%s" can not be deleted.', $item->name));
+        }
 
         return redirect()
             ->route('items.index')
-            ->with('message', 'Item "'.$item->name.'" was deleted.');
+            ->with('message', sprintf('Item "%s" was deleted.', $item->name));
     }
 }
