@@ -105,7 +105,7 @@ class ItemsController extends Controller
 
         return redirect()
             ->route('items.index')
-            ->with('message', 'Item "'.$item->name.'" was updated.');
+            ->with('message', sprintf('Item "%s" was updated.', $item->inv));
     }
 
     /**
