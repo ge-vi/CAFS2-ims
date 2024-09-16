@@ -24,7 +24,7 @@ class UpdateItemRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'min:2'],
+            'name' => ['nullable', 'min:2'],
             'owner.id' => ['required', 'exists:owners,id'],
             'type.id' => ['required', 'exists:types,id'],
             'description' => ['nullable', 'min:3'],

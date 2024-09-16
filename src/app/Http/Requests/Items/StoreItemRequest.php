@@ -24,7 +24,7 @@ class StoreItemRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'min:2'],
+            'name' => ['nullable', 'min:2'],
             'owner_id' => ['required', 'exists:owners,id'],
             'type_id' => ['required', 'exists:types,id'],
             'description' => ['nullable', 'min:3'],
